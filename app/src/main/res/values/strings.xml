@@ -2,4 +2,9 @@
   <string name="app_name">Noute</string>
   <string name="empty_list">Nenhum item adicionado</string>
   <string name="home">Home</string>
+  <string name="title_example">Titulo</string>
+  <string name="content_example">Content</string>
+  <string name="type_your_text">Digite sua nota</string>
+  <string name="add">Adicionar</string>
+  <string name="timestamp_example">25 jun - 14 30</string>
 </resources>

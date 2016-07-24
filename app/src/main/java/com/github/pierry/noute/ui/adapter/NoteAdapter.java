@@ -16,13 +16,13 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteHolder> {
   private Context context;
 
   public class NoteHolder extends RecyclerView.ViewHolder {
-    public TextView title;
     public TextView content;
+    public TextView timestamp;
 
     public NoteHolder(View view) {
       super(view);
-      title = (TextView) view.findViewById(R.id.title);
       content = (TextView) view.findViewById(R.id.content);
+      timestamp = (TextView) view.findViewById(R.id.timestamp);
     }
   }
 
@@ -40,7 +40,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteHolder> {
   @Override public void onBindViewHolder(NoteHolder holder, int position) {
     Note note = notes.get(position);
     holder.content.setText(note.getContent());
-    holder.title.setText(note.getTitle());
+    holder.timestamp.setText(note.getTimestamp());
   }
 
   @Override public int getItemCount() {

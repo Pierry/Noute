@@ -5,5 +5,10 @@
   <dimen name="framelayout_height">0px</dimen>
   <dimen name="rotate_loading">80dp</dimen>
   <dimen name="rotate_loading_width">5dp</dimen>
-  <dimen name="small_margin">10dp</dimen>
+  <dimen name="margin_small">10dp</dimen>
+  <dimen name="font_small">12sp</dimen>
+  <dimen name="margin_tiny">5dp</dimen>
+  <dimen name="default_margin">20dp</dimen>
+  <dimen name="large_font">20sp</dimen>
+  <dimen name="font_tiny">10sp</dimen>
 </resources>

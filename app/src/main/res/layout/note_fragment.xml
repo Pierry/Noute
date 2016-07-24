@@ -4,14 +4,6 @@
     android:id="@+id/layoutMain"
     android:background="@color/icons"
     android:layout_width="match_parent" android:layout_height="match_parent">
-  <TextView
-      android:id="@+id/empty"
-      android:text="@string/empty_list"
-      android:layout_centerInParent="true"
-      android:textStyle="bold"
-      android:visibility="gone"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"/>
   <com.github.pierry.fitloader.RotateLoading
       android:id="@+id/rotateLoading"
       android:layout_width="@dimen/rotate_loading"
@@ -21,24 +13,48 @@
       android:background="@android:color/transparent"
       android:layout_centerInParent="true"
   />
+  <LinearLayout android:layout_width="match_parent"
+      android:orientation="vertical"
+      android:id="@+id/layoutEdit"
+      android:layout_height="wrap_content">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/type_your_text"
+        android:textSize="@dimen/font_small"
+        android:padding="@dimen/default_margin"
+        android:id="@+id/content"
+        android:textColorHint="@color/nt_gray"
+        android:textColor="@color/nt_black"
+        android:layout_margin="@dimen/margin_small"
+        android:background="@drawable/back_edittext"
+        android:textCursorDrawable="@drawable/text_cursor_cyan"/>
+    <Button
+        android:id="@+id/add"
+        android:visibility="gone"
+        android:text="@string/add"
+        android:textColor="@color/icons"
+        android:padding="@dimen/margin_small"
+        android:background="@color/colorPrimaryDark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+  </LinearLayout>
   <RelativeLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:id="@+id/body"
+      android:layout_below="@+id/layoutEdit"
       android:orientation="horizontal"
   >
     <LinearLayout
         android:id="@+id/layoutTitle"
         android:layout_width="match_parent"
         android:orientation="vertical"
-        android:layout_below="@+id/toolbar"
         android:layout_height="match_parent">
 
       <android.support.v7.widget.RecyclerView
           android:id="@+id/recyclerView"
           android:layout_width="match_parent"
-          android:layout_marginLeft="@dimen/small_margin"
-          android:layout_marginRight="@dimen/small_margin"
           android:layout_height="match_parent"
           android:scrollbars="vertical"/>
 

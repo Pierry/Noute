@@ -4,12 +4,14 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import com.github.pierry.noute.ui.fragments.AddNoteFragment;
+import com.github.pierry.noute.ui.fragments.AddNoteFragment_;
 import com.github.pierry.noute.ui.fragments.NoteFragment;
+import com.github.pierry.noute.ui.fragments.NoteFragment_;
 
 public class MainAdapter extends FragmentPagerAdapter {
 
   private final int PAGE_COUNT = 2;
-  private String tabTitles[] = new String[] { "Notas", "Adicionar" };
+  private String tabTitles[] = new String[] { "Notas", "Favoritas" };
 
   public MainAdapter(FragmentManager fm) {
     super(fm);
@@ -22,9 +24,9 @@ public class MainAdapter extends FragmentPagerAdapter {
   @Override public Fragment getItem(int position) {
     switch (position) {
       case 0:
-        return new NoteFragment();
+        return new NoteFragment_();
       case 1:
-        return new AddNoteFragment();
+        return new AddNoteFragment_();
     }
     return new NoteFragment();
   }
