@@ -28,6 +28,10 @@ dependencies {
   compile 'com.android.support:support-v4:24.0.0'
   compile 'com.jakewharton.threetenabp:threetenabp:1.0.3'
   compile 'com.michaelpardo:activeandroid:3.1.0-SNAPSHOT'
+  compile 'com.nineoldandroids:library:2.4.0'
+  compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
+  compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
+  compile 'com.github.Pierry:fit-loader:v1.1'
   compile 'com.android.support:multidex:1.0.0'
   compile 'com.android.support:design:23.1.1'
   compile('com.mikepenz:materialdrawer:5.1.8@aar') {

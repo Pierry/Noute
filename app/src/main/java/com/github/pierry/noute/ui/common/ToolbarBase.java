@@ -6,8 +6,8 @@ import android.content.Intent;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import com.astuetz.PagerSlidingTabStrip;
-import com.github.pierry.cartolapp.MainActivity_;
-import com.github.pierry.cartolapp.R;
+import com.github.pierry.noute.MainActivity;
+import com.github.pierry.noute.R;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
@@ -54,7 +54,7 @@ import org.androidannotations.annotations.UiThread;
           @Override public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
             switch (position) {
               case 1:
-                context.startActivity(new Intent(context, MainActivity_.class));
+                context.startActivity(new Intent(context, MainActivity.class));
                 return true;
               default:
                 return true;

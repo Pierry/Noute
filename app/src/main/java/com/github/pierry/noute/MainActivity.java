@@ -2,27 +2,37 @@ package com.github.pierry.noute;
 
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.astuetz.PagerSlidingTabStrip;
+import com.github.pierry.noute.ui.adapter.MainAdapter;
+import com.github.pierry.noute.ui.common.ToolbarBase;
+import com.readystatesoftware.systembartint.SystemBarTintManager;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
-@EActivity(R.layout.activity_main) public class MainActivity extends AppCompatActivity {
+@EActivity(R.layout.activity_main) public class MainActivity extends AppCompatActivity
+    implements ViewPager.OnPageChangeListener {
 
   @ViewById PagerSlidingTabStrip tabs;
   @ViewById ViewPager pager;
+  @ViewById Toolbar toolbar;
 
   @Bean(ToolbarBase.class) ToolbarBase toolbarBase;
 
   @AfterViews void init() {
-    SystemBarTintManager tintManager = new SystemBarTintManager(getActivity());
+    toolbar.setTitle(R.string.app_name);
+    setSupportActionBar(toolbar);
+    toolbarBase.injectToolbar(toolbar, this);
+    SystemBarTintManager tintManager = new SystemBarTintManager(this);
     tintManager.setStatusBarTintEnabled(true);
-    pager.setAdapter(new HomeAdapter(getActivity().getSupportFragmentManager()));
+    pager.setAdapter(new MainAdapter(getSupportFragmentManager()));
     tabs.setViewPager(pager);
-    tabs.setTextColorResource(R.color.silver);
+    tabs.setTextColorResource(R.color.nt_silver);
     tabs.setDividerColor(android.R.color.transparent);
     final int pageMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4,
         getResources().getDisplayMetrics());
@@ -40,7 +50,7 @@ import org.androidannotations.annotations.ViewById;
       if (i == position) {
         tv.setTextColor(getResources().getColor(R.color.icons));
       } else {
-        tv.setTextColor(getResources().getColor(R.color.silver));
+        tv.setTextColor(getResources().getColor(R.color.nt_silver));
       }
     }
   }
@@ -52,5 +62,4 @@ import org.androidannotations.annotations.ViewById;
   @Override public void onPageScrollStateChanged(int state) {
 
   }
-
 }

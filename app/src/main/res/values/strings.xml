@@ -1,3 +1,5 @@
 <resources>
   <string name="app_name">Noute</string>
+  <string name="empty_list">Nenhum item adicionado</string>
+  <string name="home">Home</string>
 </resources>
