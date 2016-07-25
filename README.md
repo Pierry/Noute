@@ -1,4 +1,4 @@
-Motavation
+Motivation
 =======
 
 Evernote e Google Keep iniciaram com anotações básicas, poucos filtros, simples e principalmente, extremamente rápidos na maioria dos smartphones. Com a evolução, estão complexos e lentos, com opções desnecessárias, perdendo o grande diferencial inicial.
