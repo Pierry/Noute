@@ -2,6 +2,7 @@ package com.github.pierry.noute.ui.fragments;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -42,17 +43,25 @@ import org.androidannotations.annotations.ViewById;
   @ViewById RecyclerView recyclerView;
   @ViewById EditText content;
   @ViewById Button add;
+  @ViewById SwipeRefreshLayout swipeRefreshLayout;
 
   @Bean(NoteService.class) INoteService noteService;
 
   private List<Note> notes = new ArrayList<>();
   private NoteAdapter noteAdapter;
 
+
   @AfterViews void init() {
     setHasOptionsMenu(true);
     faces();
     showLoader();
     recyclerViewConfig();
+    swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+      @Override public void onRefresh() {
+        load();
+        swipeRefreshLayout.setRefreshing(false);
+      }
+    });
   }
 
   @UiThread void faces() {

@@ -2,6 +2,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/layoutMain"
+    android:animateLayoutChanges="true"
     android:background="@color/icons"
     android:layout_width="match_parent" android:layout_height="match_parent">
   <com.github.pierry.fitloader.RotateLoading
@@ -16,6 +17,7 @@
   <LinearLayout android:layout_width="match_parent"
       android:orientation="vertical"
       android:id="@+id/layoutEdit"
+      android:animateLayoutChanges="true"
       android:layout_height="wrap_content">
     <EditText
         android:layout_width="match_parent"
@@ -44,6 +46,7 @@
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:id="@+id/body"
+      android:animateLayoutChanges="true"
       android:layout_below="@+id/layoutEdit"
       android:orientation="horizontal"
   >
@@ -51,14 +54,18 @@
         android:id="@+id/layoutTitle"
         android:layout_width="match_parent"
         android:orientation="vertical"
+        android:animateLayoutChanges="true"
         android:layout_height="match_parent">
-
-      <android.support.v7.widget.RecyclerView
-          android:id="@+id/recyclerView"
+      <android.support.v4.widget.SwipeRefreshLayout
+          android:id="@+id/swipeRefreshLayout"
           android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:scrollbars="vertical"/>
-
+          android:layout_height="match_parent">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"/>
+      </android.support.v4.widget.SwipeRefreshLayout>
     </LinearLayout>
   </RelativeLayout>
 </RelativeLayout>

@@ -21,4 +21,6 @@
   <string name="user">Usuário</string>
   <string name="search">Pesquisar</string>
   <string name="search_hint">Pesquisar</string>
+  <string name="notes">Notas</string>
+  <string name="favorites">Favoritas</string>
 </resources>

@@ -30,7 +30,7 @@ import org.androidannotations.annotations.ViewById;
   @AfterViews void init() {
     toolbar.setTitle(R.string.app_name);
     setSupportActionBar(toolbar);
-    toolbarBase.injectToolbar(toolbar, this);
+    //toolbarBase.injectToolbar(toolbar, this);
     SystemBarTintManager tintManager = new SystemBarTintManager(this);
     tintManager.setStatusBarTintEnabled(true);
     mainAdapter = new MainAdapter(getSupportFragmentManager());
@@ -48,14 +48,13 @@ import org.androidannotations.annotations.ViewById;
 
   @Override
   public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-    LinearLayout layout = (LinearLayout) tabs.getChildAt(0);
-    for (int i = 0; i < layout.getChildCount(); i++) {
-      TextView tv = (TextView) layout.getChildAt(i);
-      if (i == position) {
-        tv.setTextColor(getResources().getColor(R.color.icons));
-      } else {
-        tv.setTextColor(getResources().getColor(R.color.nt_silver));
-      }
+    switch (position){
+      case 0:
+        getSupportActionBar().setTitle(getResources().getString(R.string.notes));
+        break;
+      case 1:
+        getSupportActionBar().setTitle(getResources().getString(R.string.favorites));
+        break;
     }
   }
 
