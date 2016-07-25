@@ -41,8 +41,8 @@ import org.androidannotations.annotations.UiThread;
   }
 
   @UiThread void initDrawer() {
-    PrimaryDrawerItem home =
-        new PrimaryDrawerItem().withName(R.string.settings).withIcon(GoogleMaterial.Icon.gmd_settings);
+    PrimaryDrawerItem home = new PrimaryDrawerItem().withName(R.string.settings)
+        .withIcon(GoogleMaterial.Icon.gmd_settings);
     PrimaryDrawerItem share =
         new PrimaryDrawerItem().withName(R.string.share).withIcon(GoogleMaterial.Icon.gmd_share);
     new DrawerBuilder().withActivity((Activity) act)
@@ -68,19 +68,21 @@ import org.androidannotations.annotations.UiThread;
 
   @UiThread void initAccount() {
     headerResult = new AccountHeaderBuilder().withActivity(act)
-        .withHeaderBackground(R.color.colorPrimary)
-        .addProfiles(new ProfileDrawerItem().withName("Usuário"))
+        .withHeaderBackground(R.color.colorAccent)
+        .addProfiles(
+            new ProfileDrawerItem().withName(context.getResources().getString(R.string.user)))
         .withOnAccountHeaderListener(new AccountHeader.OnAccountHeaderListener() {
           @Override
           public boolean onProfileChanged(View view, IProfile profile, boolean currentProfile) {
             return false;
           }
         })
+        .withSelectionListEnabledForSingleProfile(false)
         .build();
   }
 
-  @UiThread
-  public void changeColor(PagerSlidingTabStrip tabs, SystemBarTintManager tintManager, int newColor) {
+  @UiThread public void changeColor(PagerSlidingTabStrip tabs, SystemBarTintManager tintManager,
+      int newColor) {
     tabs.setBackgroundColor(newColor);
     tintManager.setTintColor(newColor);
   }

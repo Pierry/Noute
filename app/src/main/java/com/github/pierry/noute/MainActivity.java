@@ -1,6 +1,5 @@
 package com.github.pierry.noute;
 
-import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -25,13 +24,17 @@ import org.androidannotations.annotations.ViewById;
 
   @Bean(ToolbarBase.class) ToolbarBase toolbarBase;
 
+  private int current = 0;
+  private MainAdapter mainAdapter;
+
   @AfterViews void init() {
     toolbar.setTitle(R.string.app_name);
     setSupportActionBar(toolbar);
     toolbarBase.injectToolbar(toolbar, this);
     SystemBarTintManager tintManager = new SystemBarTintManager(this);
     tintManager.setStatusBarTintEnabled(true);
-    pager.setAdapter(new MainAdapter(getSupportFragmentManager()));
+    mainAdapter = new MainAdapter(getSupportFragmentManager());
+    pager.setAdapter(mainAdapter);
     tabs.setViewPager(pager);
     tabs.setTextColorResource(R.color.nt_silver);
     tabs.setDividerColor(android.R.color.transparent);
@@ -57,10 +60,11 @@ import org.androidannotations.annotations.ViewById;
   }
 
   @Override public void onPageSelected(int position) {
-
+    current = position;
   }
 
   @Override public void onPageScrollStateChanged(int state) {
 
   }
+
 }

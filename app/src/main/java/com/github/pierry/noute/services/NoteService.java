@@ -23,7 +23,7 @@ import org.androidannotations.annotations.EBean;
 
   @Override public List<Note> getByContent(String content) {
     try {
-      return noteRepository.get();
+      return noteRepository.getByContent(content.toLowerCase());
     } catch (Exception e){
       return Collections.emptyList();
     }

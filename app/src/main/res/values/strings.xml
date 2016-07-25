@@ -18,4 +18,7 @@
   <string name="cancel">Cancelar</string>
   <string name="delete">Excluir</string>
   <string name="deleted">Deletado</string>
+  <string name="user">Usuário</string>
+  <string name="search">Pesquisar</string>
+  <string name="search_hint">Pesquisar</string>
 </resources>

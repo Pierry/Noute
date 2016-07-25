@@ -1,16 +1,22 @@
 package com.github.pierry.noute.ui.fragments;
 
 import android.support.v4.app.Fragment;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.text.Editable;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.github.pierry.fitloader.RotateLoading;
+import com.github.pierry.noute.MainActivity;
 import com.github.pierry.noute.R;
 import com.github.pierry.noute.common.FontfaceHelper;
 import com.github.pierry.noute.domain.Note;
@@ -39,22 +45,23 @@ import org.androidannotations.annotations.ViewById;
 
   @Bean(NoteService.class) INoteService noteService;
 
-  List<Note> notes = new ArrayList<>();
-  NoteAdapter noteAdapter;
+  private List<Note> notes = new ArrayList<>();
+  private NoteAdapter noteAdapter;
 
-  @AfterViews void init()  {
+  @AfterViews void init() {
+    setHasOptionsMenu(true);
     faces();
     showLoader();
     recyclerViewConfig();
   }
 
-  @UiThread void faces(){
+  @UiThread void faces() {
     FontfaceHelper.setFontFace(getActivity(), content);
     FontfaceHelper.setFontFace(getActivity(), add);
   }
 
   @AfterTextChange(R.id.content) void content(Editable text, TextView content) {
-    if (text.length() > 0){
+    if (text.length() > 0) {
       add.setVisibility(View.VISIBLE);
     } else {
       add.setVisibility(View.GONE);
@@ -98,5 +105,44 @@ import org.androidannotations.annotations.ViewById;
     rotateLoading.stop();
     rotateLoading.setVisibility(View.GONE);
     body.setVisibility(View.VISIBLE);
+  }
+
+  @Override public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    super.onCreateOptionsMenu(menu, inflater);
+    menu.clear();
+    inflater.inflate(R.menu.main_menu, menu);
+    MenuItem item = menu.findItem(R.id.actionSearch);
+    SearchView searchView =
+        new SearchView(((MainActivity) getActivity()).getSupportActionBar().getThemedContext());
+    MenuItemCompat.setShowAsAction(item,
+        MenuItemCompat.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW | MenuItemCompat.SHOW_AS_ACTION_IF_ROOM);
+    MenuItemCompat.setActionView(item, searchView);
+    searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+      @Override public boolean onQueryTextSubmit(String query) {
+        showLoader();
+        searchAndUpdate(query);
+        return true;
+      }
+
+      @Override public boolean onQueryTextChange(String newText) {
+        if (newText.length() < 3 && newText.length() > 0){
+          return false;
+        }
+        showLoader();
+        searchAndUpdate(newText);
+        return true;
+      }
+    });
+    searchView.setOnClickListener(new View.OnClickListener() {
+      @Override public void onClick(View v) {
+
+      }
+    });
+  }
+
+  @UiThread void searchAndUpdate(String query){
+    notes = noteService.getByContent(query);
+    hideLoader();
+    adapter();
   }
 }

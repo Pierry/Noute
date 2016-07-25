@@ -3,6 +3,7 @@ package com.github.pierry.noute.ui.adapter;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,11 +27,13 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteHolder> {
   public class NoteHolder extends RecyclerView.ViewHolder {
     public TextView content;
     public TextView timestamp;
+    public CardView cardView;
 
     public NoteHolder(View view) {
       super(view);
       content = (TextView) view.findViewById(R.id.content);
       timestamp = (TextView) view.findViewById(R.id.timestamp);
+      cardView = (CardView) view.findViewById(R.id.cardView);
       FontfaceHelper.setFontFace(context, content);
       FontfaceHelper.setFontFace(context, timestamp);
     }
