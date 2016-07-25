@@ -3,8 +3,7 @@ package com.github.pierry.noute.ui.adapter;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import com.github.pierry.noute.ui.fragments.AddNoteFragment;
-import com.github.pierry.noute.ui.fragments.AddNoteFragment_;
+import com.github.pierry.noute.ui.fragments.FavFragment_;
 import com.github.pierry.noute.ui.fragments.NoteFragment;
 import com.github.pierry.noute.ui.fragments.NoteFragment_;
 
@@ -26,7 +25,7 @@ public class MainAdapter extends FragmentPagerAdapter {
       case 0:
         return new NoteFragment_();
       case 1:
-        return new AddNoteFragment_();
+        return new FavFragment_();
     }
     return new NoteFragment();
   }

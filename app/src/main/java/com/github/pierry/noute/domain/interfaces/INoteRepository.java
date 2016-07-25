@@ -10,4 +10,6 @@ public interface INoteRepository extends IRepositoryBase<Note> {
   List<Note> getByTimestamp(String timestamp);
 
   List<Note> getByKind(long kind);
+
+  List<Note> getFavs();
 }

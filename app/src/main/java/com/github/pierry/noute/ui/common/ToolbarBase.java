@@ -42,14 +42,16 @@ import org.androidannotations.annotations.UiThread;
 
   @UiThread void initDrawer() {
     PrimaryDrawerItem home =
-        new PrimaryDrawerItem().withName(R.string.home).withIcon(GoogleMaterial.Icon.gmd_home);
+        new PrimaryDrawerItem().withName(R.string.settings).withIcon(GoogleMaterial.Icon.gmd_settings);
+    PrimaryDrawerItem share =
+        new PrimaryDrawerItem().withName(R.string.share).withIcon(GoogleMaterial.Icon.gmd_share);
     new DrawerBuilder().withActivity((Activity) act)
         .withToolbar(toolbar)
         .withHasStableIds(true)
         .withTranslucentStatusBar(true)
         .withSelectedItem(-1)
         .withAccountHeader(headerResult)
-        .addDrawerItems(home)
+        .addDrawerItems(home, share)
         .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
           @Override public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
             switch (position) {

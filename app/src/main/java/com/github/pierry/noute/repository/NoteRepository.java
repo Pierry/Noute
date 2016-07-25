@@ -26,7 +26,7 @@ import org.androidannotations.annotations.EBean;
 
   @Override public boolean delete(long id) {
     try {
-      new Delete().from(Note.class).where("Id=?", id).executeSingle();
+      new Delete().from(Note.class).where("Id=" + id).execute();
       return true;
     } catch (Exception ignored) {
       ignored.printStackTrace();
@@ -36,15 +36,20 @@ import org.androidannotations.annotations.EBean;
 
   @Override public List<Note> getByContent(String content) {
     return new Select().from(Note.class).
-        where("Content like '%" + content + "%'").orderBy("Content DESC").execute();
+        where("Content like '%" + content + "%'").orderBy("Timestamp DESC").execute();
   }
 
   @Override public List<Note> getByTimestamp(String timestamp) {
     return new Select().from(Note.class).
-        where("Timestamp = '" + timestamp + "'").execute();
+        where("Timestamp = '" + timestamp + "'")
+        .orderBy("Timestamp DESC").execute();
   }
 
   @Override public List<Note> getByKind(long id) {
-    return new Select().from(Note.class).where("Kind=?", id).orderBy("Content DESC").execute();
+    return new Select().from(Note.class).where("Kind=?", id).orderBy("Timestamp DESC").execute();
+  }
+
+  @Override public List<Note> getFavs() {
+    return new Select().from(Note.class).where("IsFav=1").orderBy("Timestamp DESC").execute();
   }
 }

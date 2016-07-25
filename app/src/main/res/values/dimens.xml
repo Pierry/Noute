@@ -11,4 +11,5 @@
   <dimen name="default_margin">20dp</dimen>
   <dimen name="large_font">20sp</dimen>
   <dimen name="font_tiny">10sp</dimen>
+  <dimen name="left_default_with_icon">72dp</dimen>
 </resources>

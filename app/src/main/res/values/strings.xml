@@ -7,4 +7,15 @@
   <string name="type_your_text">Digite sua nota</string>
   <string name="add">Adicionar</string>
   <string name="timestamp_example">25 jun - 14 30</string>
+  <string name="favorite_message">Adicionar aos favoritos?</string>
+  <string name="yes">Sim</string>
+  <string name="no">Não</string>
+  <string name="added_to_fav">Adicionado aos favoritos</string>
+  <string name="settings">Configurações</string>
+  <string name="share">Compartilhar</string>
+  <string name="popup_message">O que deseja fazer?</string>
+  <string name="favorite">Favoritar</string>
+  <string name="cancel">Cancelar</string>
+  <string name="delete">Excluir</string>
+  <string name="deleted">Deletado</string>
 </resources>

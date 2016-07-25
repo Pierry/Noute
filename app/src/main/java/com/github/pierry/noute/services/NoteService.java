@@ -68,4 +68,12 @@ import org.androidannotations.annotations.EBean;
       e.printStackTrace();
     }
   }
+
+  @Override public List<Note> getFavs() {
+    try {
+      return noteRepository.getFavs();
+    } catch (Exception e){
+      return Collections.emptyList();
+    }
+  }
 }
