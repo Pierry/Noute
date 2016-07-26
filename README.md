@@ -1,8 +1,8 @@
 Motivation
 =======
 
-Evernote e Google Keep iniciaram com anotações básicas, poucos filtros, simples e principalmente, extremamente rápidos na maioria dos smartphones. Com a evolução, estão complexos e lentos, com opções desnecessárias, perdendo o grande diferencial inicial.
-A proposta do Noute é reviver essa experiencia, com um app simples para notas.
+Evernote and Google Keep has started providing some basic features like notes, a few basic filters, and more important, extremely fast at the maijor smartphones. As the time gone by, these apps have envolved and its features bacame complex and started to showing delays, losing its diferencial.
+The Nouse's proposal its to renew that experience by a very simple note app.
 
 
 Libraries used
