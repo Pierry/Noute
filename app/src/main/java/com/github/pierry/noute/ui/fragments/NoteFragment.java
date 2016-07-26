@@ -50,7 +50,6 @@ import org.androidannotations.annotations.ViewById;
   private List<Note> notes = new ArrayList<>();
   private NoteAdapter noteAdapter;
 
-
   @AfterViews void init() {
     setHasOptionsMenu(true);
     faces();
@@ -79,7 +78,8 @@ import org.androidannotations.annotations.ViewById;
 
   @Click void add() {
     String contentText = content.getText().toString();
-    Note note = new Note(contentText);
+    String[] splited = contentText.split("\n\n");
+    Note note = new Note(splited[0], splited[1]);
     noteService.create(note);
     notes.add(0, note);
     noteAdapter.notifyDataSetChanged();

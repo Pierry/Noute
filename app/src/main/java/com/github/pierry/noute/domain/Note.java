@@ -7,6 +7,7 @@ import org.threeten.bp.Instant;
 
 @Table(name = "Note") public class Note extends Model {
 
+  @Column(name = "Title") String title;
   @Column(name = "Content") String content;
   @Column(name = "Timestamp") String timestamp;
   @Column(name = "BackgroundColor") String backgroundColor;
@@ -17,7 +18,8 @@ import org.threeten.bp.Instant;
     super();
   }
 
-  public Note(String content) {
+  public Note(String title, String content) {
+    this.title = title;
     this.content = content;
     this.timestamp = Instant.now().toString();
     this.kind = null;
@@ -51,5 +53,9 @@ import org.threeten.bp.Instant;
 
   public String getBackgroundColor() {
     return backgroundColor;
+  }
+
+  public String getTitle() {
+    return title;
   }
 }

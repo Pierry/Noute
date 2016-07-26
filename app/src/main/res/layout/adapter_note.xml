@@ -25,11 +25,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
       <TextView
+          android:id="@+id/title"
+          android:layout_width="wrap_content"
+          android:text="@string/content_example"
+          android:textSize="@dimen/font_large"
+          android:textColor="@color/nt_black"
+          android:layout_marginLeft="@dimen/margin_small"
+          android:layout_marginTop="@dimen/margin_small"
+          android:layout_marginRight="@dimen/margin_small"
+          android:layout_height="wrap_content"/>
+      <TextView
           android:id="@+id/content"
           android:layout_width="wrap_content"
           android:text="@string/content_example"
           android:textColor="@color/nt_gray"
-          android:layout_margin="@dimen/margin_small"
+          android:layout_marginLeft="@dimen/margin_small"
+          android:layout_marginTop="@dimen/margin_2dp"
+          android:layout_marginBottom="@dimen/margin_small"
+          android:layout_marginRight="@dimen/margin_small"
           android:layout_height="wrap_content"/>
       <TextView
           android:id="@+id/timestamp"

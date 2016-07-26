@@ -23,4 +23,5 @@
   <string name="search_hint">Pesquisar</string>
   <string name="notes">Notas</string>
   <string name="favorites">Favoritas</string>
+  <string name="title_text">Título</string>
 </resources>

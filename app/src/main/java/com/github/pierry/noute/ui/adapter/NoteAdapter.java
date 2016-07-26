@@ -26,14 +26,17 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteHolder> {
 
   public class NoteHolder extends RecyclerView.ViewHolder {
     public TextView content;
+    public TextView title;
     public TextView timestamp;
     public CardView cardView;
 
     public NoteHolder(View view) {
       super(view);
+      title = (TextView) view.findViewById(R.id.title);
       content = (TextView) view.findViewById(R.id.content);
       timestamp = (TextView) view.findViewById(R.id.timestamp);
       cardView = (CardView) view.findViewById(R.id.cardView);
+      FontfaceHelper.setFontFace(context, title);
       FontfaceHelper.setFontFace(context, content);
       FontfaceHelper.setFontFace(context, timestamp);
     }
@@ -53,6 +56,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteHolder> {
 
   @Override public void onBindViewHolder(NoteHolder holder, final int position) {
     Note note = notes.get(position);
+    holder.title.setText(note.getTitle());
     holder.content.setText(note.getContent());
     String date = DateHelper.date(note.getTimestamp());
     holder.timestamp.setText(date);
