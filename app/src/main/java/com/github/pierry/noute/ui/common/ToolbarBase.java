@@ -41,17 +41,19 @@ import org.androidannotations.annotations.UiThread;
   }
 
   @UiThread void initDrawer() {
-    PrimaryDrawerItem home = new PrimaryDrawerItem().withName(R.string.settings)
-        .withIcon(GoogleMaterial.Icon.gmd_settings);
-    PrimaryDrawerItem share =
-        new PrimaryDrawerItem().withName(R.string.share).withIcon(GoogleMaterial.Icon.gmd_share);
+    PrimaryDrawerItem sugests = new PrimaryDrawerItem().withName(R.string.sugests)
+        .withIcon(GoogleMaterial.Icon.gmd_email);
+    PrimaryDrawerItem share = new PrimaryDrawerItem().withName(R.string.share)
+        .withIcon(GoogleMaterial.Icon.gmd_share);
+    PrimaryDrawerItem about =
+        new PrimaryDrawerItem().withName(R.string.about).withIcon(GoogleMaterial.Icon.gmd_info);
     new DrawerBuilder().withActivity((Activity) act)
         .withToolbar(toolbar)
         .withHasStableIds(true)
         .withTranslucentStatusBar(true)
         .withSelectedItem(-1)
         .withAccountHeader(headerResult)
-        .addDrawerItems(home, share)
+        .addDrawerItems(sugests, share, about)
         .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
           @Override public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
             switch (position) {

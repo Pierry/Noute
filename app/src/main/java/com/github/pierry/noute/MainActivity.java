@@ -30,7 +30,7 @@ import org.androidannotations.annotations.ViewById;
   @AfterViews void init() {
     toolbar.setTitle(R.string.app_name);
     setSupportActionBar(toolbar);
-    //toolbarBase.injectToolbar(toolbar, this);
+    toolbarBase.injectToolbar(toolbar, this);
     SystemBarTintManager tintManager = new SystemBarTintManager(this);
     tintManager.setStatusBarTintEnabled(true);
     mainAdapter = new MainAdapter(getSupportFragmentManager());
