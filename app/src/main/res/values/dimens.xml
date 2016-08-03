@@ -3,7 +3,7 @@
   <dimen name="activity_horizontal_margin">16dp</dimen>
   <dimen name="activity_vertical_margin">16dp</dimen>
   <dimen name="framelayout_height">0px</dimen>
-  <dimen name="rotate_loading">80dp</dimen>
+  <dimen name="rotate_loading">60dp</dimen>
   <dimen name="rotate_loading_width">5dp</dimen>
   <dimen name="margin_small">10dp</dimen>
   <dimen name="font_small">12sp</dimen>
@@ -14,4 +14,5 @@
   <dimen name="left_default_with_icon">72dp</dimen>
   <dimen name="tab_size">30dp</dimen>
   <dimen name="margin_2dp">2dp</dimen>
+  <dimen name="box_color">30dp</dimen>
 </resources>

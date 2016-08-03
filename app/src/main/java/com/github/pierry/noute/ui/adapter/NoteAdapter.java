@@ -1,7 +1,6 @@
 package com.github.pierry.noute.ui.adapter;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
@@ -13,93 +12,36 @@ import android.widget.TextView;
 import com.github.pierry.noute.R;
 import com.github.pierry.noute.common.DateHelper;
 import com.github.pierry.noute.common.FontfaceHelper;
-import com.github.pierry.noute.common.TimeNow;
 import com.github.pierry.noute.domain.Note;
 import com.github.pierry.noute.domain.interfaces.INoteService;
-import com.github.pierry.simpletoast.SimpleToast;
+import com.github.pierry.noute.services.NoteService;
+import com.github.pierry.noute.ui.common.RecyclerViewAdapterBase;
+import com.github.pierry.noute.ui.common.ViewWrapper;
+import com.github.pierry.noute.ui.views.NoteView;
+import com.github.pierry.noute.ui.views.NoteView_;
 import java.util.List;
+import org.androidannotations.annotations.Bean;
+import org.androidannotations.annotations.EBean;
+import org.androidannotations.annotations.RootContext;
 
-public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteHolder> {
+@EBean public class NoteAdapter extends RecyclerViewAdapterBase<Note, NoteView> {
 
-  private List<Note> notes;
-  private Context context;
-  private INoteService noteService;
+  @RootContext Context context;
 
-  public class NoteHolder extends RecyclerView.ViewHolder {
-    public TextView content;
-    public TextView title;
-    public TextView timestamp;
-    public CardView cardView;
+  @Bean(NoteService.class) INoteService noteService;
 
-    public NoteHolder(View view) {
-      super(view);
-      title = (TextView) view.findViewById(R.id.title);
-      content = (TextView) view.findViewById(R.id.content);
-      timestamp = (TextView) view.findViewById(R.id.timestamp);
-      cardView = (CardView) view.findViewById(R.id.cardView);
-      FontfaceHelper.setFontFace(context, title);
-      FontfaceHelper.setFontFace(context, content);
-      FontfaceHelper.setFontFace(context, timestamp);
-    }
+  public void addItems(List<Note> notes) {
+    this.items = notes;
   }
 
-  public NoteAdapter(Context context, List<Note> notes, INoteService noteService) {
-    this.context = context;
-    this.notes = notes;
-    this.noteService = noteService;
+  @Override protected NoteView onCreateItemView(ViewGroup parent, int viewType) {
+    return NoteView_.build(context);
   }
 
-  @Override public NoteHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    View itemView =
-        LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_note, parent, false);
-    return new NoteHolder(itemView);
-  }
+  @Override public void onBindViewHolder(ViewWrapper<NoteView> viewHolder, int position) {
+    NoteView view = viewHolder.getView();
+    Note note = items.get(position);
 
-  @Override public void onBindViewHolder(NoteHolder holder, final int position) {
-    Note note = notes.get(position);
-    holder.title.setText(note.getTitle());
-    holder.content.setText(note.getContent());
-    String date = DateHelper.date(note.getTimestamp());
-    holder.timestamp.setText(date);
-    holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-      @Override public boolean onLongClick(View view) {
-        alert(position);
-        return true;
-      }
-    });
-    String color = "#EAEAEA";
-    if (note.getBackgroundColor() != null) {
-      color = note.getBackgroundColor();
-    }
-    holder.cardView.setCardBackgroundColor(Color.parseColor(color));
-  }
-
-  void alert(final int position) {
-    AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
-    alertDialog.setTitle(context.getResources().getString(R.string.popup_message));
-    alertDialog.setPositiveButton(R.string.favorite, new DialogInterface.OnClickListener() {
-      @Override public void onClick(DialogInterface dialogInterface, int i) {
-        Note note = notes.get(position);
-        note.favorite();
-        noteService.update(note);
-        SimpleToast.ok(context, context.getResources().getString(R.string.added_to_fav));
-      }
-    });
-    alertDialog.setNeutralButton(R.string.cancel, null);
-    alertDialog.setNegativeButton(R.string.delete, new DialogInterface.OnClickListener() {
-      @Override public void onClick(DialogInterface dialogInterface, int i) {
-        Note note = notes.get(position);
-        noteService.delete(note.getId());
-        notes.remove(note);
-        SimpleToast.error(context, context.getResources().getString(R.string.deleted));
-        notifyDataSetChanged();
-      }
-    });
-    alertDialog.setCancelable(true);
-    alertDialog.show();
-  }
-
-  @Override public int getItemCount() {
-    return notes.size();
+    view.bind(note, position);
   }
 }

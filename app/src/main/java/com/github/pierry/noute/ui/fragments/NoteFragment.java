@@ -32,7 +32,6 @@ import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
-import org.androidannotations.annotations.TextChange;
 import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 
@@ -46,9 +45,9 @@ import org.androidannotations.annotations.ViewById;
   @ViewById SwipeRefreshLayout swipeRefreshLayout;
 
   @Bean(NoteService.class) INoteService noteService;
+  @Bean(NoteAdapter.class) NoteAdapter noteAdapter;
 
   private List<Note> notes = new ArrayList<>();
-  private NoteAdapter noteAdapter;
 
   @AfterViews void init() {
     setHasOptionsMenu(true);
@@ -100,7 +99,7 @@ import org.androidannotations.annotations.ViewById;
   }
 
   @UiThread void adapter() {
-    noteAdapter = new NoteAdapter(getActivity(), notes, noteService);
+    noteAdapter.addItems(notes);
     recyclerView.setAdapter(noteAdapter);
   }
 
@@ -134,7 +133,7 @@ import org.androidannotations.annotations.ViewById;
       }
 
       @Override public boolean onQueryTextChange(String newText) {
-        if (newText.length() < 3 && newText.length() > 0){
+        if (newText.length() < 3 && newText.length() > 0) {
           return false;
         }
         showLoader();
@@ -149,7 +148,7 @@ import org.androidannotations.annotations.ViewById;
     });
   }
 
-  @UiThread void searchAndUpdate(String query){
+  @UiThread void searchAndUpdate(String query) {
     notes = noteService.getByContent(query);
     hideLoader();
     adapter();

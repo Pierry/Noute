@@ -13,4 +13,8 @@
   <color name="nt_gray">#666666</color>
   <color name="nt_white">#FFFFFF</color>
   <color name="nt_blue">#0066CC</color>
+  <color name="nt_red_card">#fdc0c0</color>
+  <color name="nt_blue_card">#d7eafc</color>
+  <color name="nt_yellow_card">#26f4f4aa</color>
+  <color name="nt_silver_card">#eaeaea</color>
 </resources>

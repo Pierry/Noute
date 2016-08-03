@@ -30,7 +30,7 @@ import org.androidannotations.annotations.ViewById;
   @Bean(NoteService.class) INoteService noteService;
 
   List<Note> notes = new ArrayList<>();
-  NoteAdapter noteAdapter;
+  @Bean(NoteAdapter.class) NoteAdapter noteAdapter;
 
   @AfterViews void init() {
     showLoader();
@@ -51,7 +51,7 @@ import org.androidannotations.annotations.ViewById;
   }
 
   @UiThread void adapter() {
-    noteAdapter = new NoteAdapter(getActivity(), notes, noteService);
+    noteAdapter.addItems(notes);
     recyclerView.setAdapter(noteAdapter);
   }
 

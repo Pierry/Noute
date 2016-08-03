@@ -16,7 +16,7 @@
   <string name="popup_message">O que deseja fazer?</string>
   <string name="favorite">Favoritar</string>
   <string name="cancel">Cancelar</string>
-  <string name="delete">Excluir</string>
+  <string name="delete">Excluir nota</string>
   <string name="deleted">Deletado</string>
   <string name="user">Usuário</string>
   <string name="search">Pesquisar</string>
@@ -28,5 +28,5 @@
   <string name="about">Sobre</string>
   <string name="card_actions_title">Personalizar</string>
   <string name="card_actions">Ações</string>
-  <string name="select_color">Selecionar cor</string>
+  <string name="select_color">Cor</string>
 </resources>
