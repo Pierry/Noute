@@ -26,7 +26,6 @@ import org.androidannotations.annotations.UiThread;
   private Drawer drawer;
   private Toolbar toolbar;
   private Activity act;
-  private AccountHeader headerResult;
   private Context context;
 
   public ToolbarBase(Context context) {
@@ -36,23 +35,22 @@ import org.androidannotations.annotations.UiThread;
   @UiThread public void injectToolbar(Toolbar toolbar, Activity act) {
     this.toolbar = toolbar;
     this.act = act;
-    initAccount();
     initDrawer();
   }
 
   @UiThread void initDrawer() {
-    PrimaryDrawerItem sugests = new PrimaryDrawerItem().withName(R.string.sugests)
-        .withIcon(GoogleMaterial.Icon.gmd_email);
-    PrimaryDrawerItem share = new PrimaryDrawerItem().withName(R.string.share)
-        .withIcon(GoogleMaterial.Icon.gmd_share);
+    PrimaryDrawerItem sugests =
+        new PrimaryDrawerItem().withName(R.string.sugests).withIcon(GoogleMaterial.Icon.gmd_email);
+    PrimaryDrawerItem share =
+        new PrimaryDrawerItem().withName(R.string.share).withIcon(GoogleMaterial.Icon.gmd_share);
     PrimaryDrawerItem about =
         new PrimaryDrawerItem().withName(R.string.about).withIcon(GoogleMaterial.Icon.gmd_info);
     new DrawerBuilder().withActivity((Activity) act)
         .withToolbar(toolbar)
+        .
         .withHasStableIds(true)
         .withTranslucentStatusBar(true)
         .withSelectedItem(-1)
-        .withAccountHeader(headerResult)
         .addDrawerItems(sugests, share, about)
         .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
           @Override public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
@@ -60,26 +58,20 @@ import org.androidannotations.annotations.UiThread;
               case 1:
                 context.startActivity(new Intent(context, MainActivity.class));
                 return true;
+              case 2:
+                Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+                String shareBody = "Utilize o app Noute - disponível na Google Play";
+                sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,
+                    "Indicação de app - Noute");
+                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+                context.startActivity(Intent.createChooser(sharingIntent, "Compartilhar "));
+                return true;
               default:
                 return true;
             }
           }
         })
-        .build();
-  }
-
-  @UiThread void initAccount() {
-    headerResult = new AccountHeaderBuilder().withActivity(act)
-        .withHeaderBackground(R.color.colorAccent)
-        .addProfiles(
-            new ProfileDrawerItem().withName(context.getResources().getString(R.string.user)))
-        .withOnAccountHeaderListener(new AccountHeader.OnAccountHeaderListener() {
-          @Override
-          public boolean onProfileChanged(View view, IProfile profile, boolean currentProfile) {
-            return false;
-          }
-        })
-        .withSelectionListEnabledForSingleProfile(false)
         .build();
   }
 
