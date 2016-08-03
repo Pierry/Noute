@@ -49,7 +49,7 @@
             android:layout_alignParentRight="true"
             android:id="@+id/switchCompat"
             android:layout_marginRight="@dimen/default_margin"
-            android:background="@null"/>
+            android:background="@null" android:checked="false"/>
       </RelativeLayout>
       <RelativeLayout android:layout_width="match_parent"
           android:orientation="horizontal"

@@ -1,11 +1,13 @@
 package com.github.pierry.noute.domain;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
 import org.threeten.bp.Instant;
 
-@Table(name = "Note") public class Note extends Model {
+@Table(name = "Note") public class Note extends Model implements Parcelable {
 
   @Column(name = "Title") String title;
   @Column(name = "Content") String content;
@@ -58,4 +60,30 @@ import org.threeten.bp.Instant;
   public String getTitle() {
     return title;
   }
+
+  @Override public int describeContents() {
+    return 0;
+  }
+
+  @Override public void writeToParcel(Parcel parcel, int i) {
+    parcel.writeInt(i);
+  }
+
+  protected Note(Parcel in) {
+    title = in.readString();
+    content = in.readString();
+    timestamp = in.readString();
+    backgroundColor = in.readString();
+    isFav = in.readByte() != 0;
+  }
+
+  public static final Creator<Note> CREATOR = new Creator<Note>() {
+    @Override public Note createFromParcel(Parcel in) {
+      return new Note(in);
+    }
+
+    @Override public Note[] newArray(int size) {
+      return new Note[size];
+    }
+  };
 }
