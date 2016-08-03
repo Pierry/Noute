@@ -7,7 +7,7 @@
   <string name="type_your_text">Digite sua nota</string>
   <string name="add">Adicionar</string>
   <string name="timestamp_example">25 jun - 14 30</string>
-  <string name="favorite_message">Adicionar aos favoritos?</string>
+  <string name="favorite_message">Item favorito</string>
   <string name="yes">Sim</string>
   <string name="no">Não</string>
   <string name="added_to_fav">Adicionado aos favoritos</string>
@@ -26,4 +26,7 @@
   <string name="title_text">Título</string>
   <string name="sugests">Sugestões</string>
   <string name="about">Sobre</string>
+  <string name="card_actions_title">Personalizar</string>
+  <string name="card_actions">Ações</string>
+  <string name="select_color">Selecionar cor</string>
 </resources>

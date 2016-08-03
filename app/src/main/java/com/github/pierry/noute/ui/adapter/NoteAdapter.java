@@ -2,6 +2,7 @@ package com.github.pierry.noute.ui.adapter;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -66,6 +67,11 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteHolder> {
         return true;
       }
     });
+    String color = "#EAEAEA";
+    if (note.getBackgroundColor() != null) {
+      color = note.getBackgroundColor();
+    }
+    holder.cardView.setCardBackgroundColor(Color.parseColor(color));
   }
 
   void alert(final int position) {

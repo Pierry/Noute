@@ -11,4 +11,6 @@
   <color name="nt_silver">#EAEAEA</color>
   <color name="nt_black">#000000</color>
   <color name="nt_gray">#666666</color>
+  <color name="nt_white">#FFFFFF</color>
+  <color name="nt_blue">#0066CC</color>
 </resources>

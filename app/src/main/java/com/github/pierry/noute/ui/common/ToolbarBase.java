@@ -47,10 +47,11 @@ import org.androidannotations.annotations.UiThread;
         new PrimaryDrawerItem().withName(R.string.about).withIcon(GoogleMaterial.Icon.gmd_info);
     new DrawerBuilder().withActivity((Activity) act)
         .withToolbar(toolbar)
-        .
         .withHasStableIds(true)
-        .withTranslucentStatusBar(true)
+        .withTranslucentStatusBar(false)
+        .withHeader(R.layout.header)
         .withSelectedItem(-1)
+        .withFullscreen(false)
         .addDrawerItems(sugests, share, about)
         .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
           @Override public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {

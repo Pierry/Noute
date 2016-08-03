@@ -1,0 +1,79 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layoutMain"
+    android:animateLayoutChanges="true"
+    android:background="@color/icons"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+  <LinearLayout android:layout_width="match_parent"
+      android:orientation="vertical"
+      android:id="@+id/layoutEdit"
+      android:animateLayoutChanges="true"
+      android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/card_actions_title"
+        android:textSize="@dimen/font_small"
+        android:id="@+id/custom"
+        android:layout_marginLeft="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_margin"
+        android:layout_marginRight="@dimen/default_margin"
+        android:textColor="@color/nt_blue"/>
+
+    <View
+        android:background="@color/nt_silver"
+        android:layout_margin="@dimen/default_margin"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/margin_2dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/favorite_message"
+        android:textSize="@dimen/font_small"
+        android:id="@+id/favorite"
+        android:layout_marginLeft="@dimen/default_margin"
+        android:layout_marginRight="@dimen/default_margin"
+        android:textColor="@color/nt_gray"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/select_color"
+        android:textSize="@dimen/font_small"
+        android:id="@+id/selectColor"
+        android:layout_marginTop="@dimen/default_margin"
+        android:layout_marginBottom="@dimen/default_margin"
+        android:layout_marginLeft="@dimen/default_margin"
+        android:layout_marginRight="@dimen/default_margin"
+        android:textColor="@color/nt_gray"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/card_actions"
+        android:textSize="@dimen/font_small"
+        android:id="@+id/actions"
+        android:layout_marginLeft="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_margin"
+        android:layout_marginRight="@dimen/default_margin"
+        android:textColor="@color/nt_blue"/>
+    <View
+        android:background="@color/nt_silver"
+        android:layout_margin="@dimen/default_margin"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/margin_2dp"/>
+    <Button
+        android:id="@+id/add"
+        android:visibility="gone"
+        android:text="@string/add"
+        android:textColor="@color/icons"
+        android:padding="@dimen/margin_small"
+        android:layout_margin="@dimen/default_margin"
+        android:background="@color/colorPrimaryDark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+  </LinearLayout>
+</RelativeLayout>
