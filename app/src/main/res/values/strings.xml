@@ -29,4 +29,6 @@
   <string name="card_actions_title">Personalizar</string>
   <string name="card_actions">Ações</string>
   <string name="select_color">Cor</string>
+  <string name="dialog_title">O que deseja fazer?</string>
+  <string name="removed_from_fav">Removido dos favoritos</string>
 </resources>

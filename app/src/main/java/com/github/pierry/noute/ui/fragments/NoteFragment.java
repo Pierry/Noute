@@ -54,6 +54,7 @@ import org.androidannotations.annotations.ViewById;
     faces();
     showLoader();
     recyclerViewConfig();
+    noteAdapter.fragmentManagerInject(getActivity().getSupportFragmentManager());
     swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
       @Override public void onRefresh() {
         load();

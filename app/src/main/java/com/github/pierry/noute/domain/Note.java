@@ -26,7 +26,7 @@ import org.threeten.bp.Instant;
     this.timestamp = Instant.now().toString();
     this.kind = null;
     this.isFav = false;
-    this.backgroundColor = null;
+    this.backgroundColor = "#ffffff";
   }
 
   public void favorite() {

@@ -33,7 +33,7 @@ import org.androidannotations.annotations.ViewById;
     this.context = context;
   }
 
-  @UiThread void fragmentManagerInject(FragmentManager fm) {
+  @UiThread public void fragmentManagerInject(FragmentManager fm) {
     this.fragmentManager = fm;
   }
 

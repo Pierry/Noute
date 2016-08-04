@@ -28,7 +28,10 @@
 
       <View
           android:background="@color/nt_silver"
-          android:layout_margin="@dimen/default_margin"
+          android:layout_marginLeft="@dimen/default_margin"
+          android:layout_marginBottom="@dimen/default_margin"
+          android:layout_marginRight="@dimen/default_margin"
+          android:layout_marginTop="@dimen/margin_small"
           android:layout_width="wrap_content"
           android:layout_height="@dimen/margin_2dp"/>
       <RelativeLayout android:layout_width="match_parent"
@@ -65,7 +68,7 @@
             android:layout_marginLeft="@dimen/default_margin"
             android:layout_marginRight="@dimen/default_margin"
             android:textColor="@color/nt_gray"/>
-        <View
+        <Button
             android:layout_toRightOf="@+id/selectColor"
             android:background="@color/nt_red_card"
             android:id="@+id/red"
@@ -73,7 +76,7 @@
             android:layout_marginTop="@dimen/default_margin"
             android:layout_width="@dimen/box_color"
             android:layout_height="@dimen/box_color"/>
-        <View
+        <Button
             android:layout_toRightOf="@+id/red"
             android:background="@color/nt_blue_card"
             android:id="@+id/blue"
@@ -81,7 +84,7 @@
             android:layout_marginTop="@dimen/default_margin"
             android:layout_width="@dimen/box_color"
             android:layout_height="@dimen/box_color"/>
-        <View
+        <Button
             android:layout_toRightOf="@+id/blue"
             android:background="@color/nt_yellow_card"
             android:id="@+id/yellow"
@@ -89,14 +92,23 @@
             android:layout_marginTop="@dimen/default_margin"
             android:layout_width="@dimen/box_color"
             android:layout_height="@dimen/box_color"/>
-        <View
+        <Button
             android:layout_toRightOf="@+id/yellow"
+            android:background="@color/nt_white"
+            android:id="@+id/white"
+            android:layout_marginLeft="@dimen/margin_small"
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_width="@dimen/box_color"
+            android:layout_height="@dimen/box_color"/>
+        <Button
+            android:layout_toRightOf="@+id/white"
             android:background="@color/nt_silver_card"
             android:id="@+id/silver"
             android:layout_marginLeft="@dimen/margin_small"
             android:layout_marginTop="@dimen/default_margin"
             android:layout_width="@dimen/box_color"
             android:layout_height="@dimen/box_color"/>
+
       </RelativeLayout>
       <TextView
           android:layout_width="match_parent"
@@ -110,7 +122,10 @@
           android:textColor="@color/nt_blue"/>
       <View
           android:background="@color/nt_silver"
-          android:layout_margin="@dimen/default_margin"
+          android:layout_marginLeft="@dimen/default_margin"
+          android:layout_marginBottom="@dimen/default_margin"
+          android:layout_marginRight="@dimen/default_margin"
+          android:layout_marginTop="@dimen/margin_small"
           android:layout_width="wrap_content"
           android:layout_height="@dimen/margin_2dp"/>
       <Button

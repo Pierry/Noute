@@ -2,6 +2,8 @@ package com.github.pierry.noute.ui.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -30,8 +32,14 @@ import org.androidannotations.annotations.RootContext;
 
   @Bean(NoteService.class) INoteService noteService;
 
+  private FragmentManager fragmentManager;
+
   public void addItems(List<Note> notes) {
     this.items = notes;
+  }
+
+  public void fragmentManagerInject(FragmentManager fragmentManager) {
+    this.fragmentManager = fragmentManager;
   }
 
   @Override protected NoteView onCreateItemView(ViewGroup parent, int viewType) {
@@ -40,6 +48,7 @@ import org.androidannotations.annotations.RootContext;
 
   @Override public void onBindViewHolder(ViewWrapper<NoteView> viewHolder, int position) {
     NoteView view = viewHolder.getView();
+    view.fragmentManagerInject(fragmentManager);
     Note note = items.get(position);
 
     view.bind(note, position);
