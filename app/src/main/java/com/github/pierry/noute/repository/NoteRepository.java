@@ -36,7 +36,7 @@ import org.androidannotations.annotations.EBean;
 
   @Override public List<Note> getByContent(String content) {
     return new Select().from(Note.class).
-        where("Title like '%" + content + "%' Content like '%" + content + "%'").orderBy("Timestamp DESC").execute();
+        where("Title like '%" + content + "%' OR Content like '%" + content + "%'").orderBy("Timestamp DESC").execute();
   }
 
   @Override public List<Note> getByTimestamp(String timestamp) {

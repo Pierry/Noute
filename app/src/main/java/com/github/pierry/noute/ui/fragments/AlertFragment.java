@@ -1,10 +1,10 @@
 package com.github.pierry.noute.ui.fragments;
 
+import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.widget.SwitchCompat;
-import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.TextView;
@@ -35,11 +35,13 @@ import org.androidannotations.annotations.ViewById;
   @ViewById Button yellow;
   @ViewById Button silver;
   @ViewById Button remove;
-  @ViewById Button cancel;
+  @ViewById Button ok;
 
   @Bean(NoteService.class) INoteService noteService;
 
   private Note note;
+
+  private static final int REQUEST_CODE = 1;
 
   enum colors {
     RED, BLUE, YELLOW, SILVER, WHITE
@@ -67,7 +69,7 @@ import org.androidannotations.annotations.ViewById;
     FontfaceHelper.setFontFace(getActivity(), selectColor);
     FontfaceHelper.setFontFace(getActivity(), actions);
     FontfaceHelper.setFontFace(getActivity(), remove);
-    FontfaceHelper.setFontFace(getActivity(), cancel);
+    FontfaceHelper.setFontFace(getActivity(), ok);
   }
 
   @Click void red() {
@@ -105,7 +107,7 @@ import org.androidannotations.annotations.ViewById;
     SimpleToast.error(getActivity(), getActivity().getResources().getString(R.string.deleted));
   }
 
-  @Click void cancel() {
+  @Click void ok() {
     getDialog().dismiss();
   }
 
@@ -120,7 +122,8 @@ import org.androidannotations.annotations.ViewById;
     note.notFavorite();
     noteService.update(note);
 
-    SimpleToast.ok(getActivity(), getActivity().getResources().getString(R.string.removed_from_fav));
+    SimpleToast.ok(getActivity(),
+        getActivity().getResources().getString(R.string.removed_from_fav));
   }
 
   @UiThread void colors(colors colors) {

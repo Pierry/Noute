@@ -14,6 +14,7 @@ import com.github.pierry.noute.common.DateHelper;
 import com.github.pierry.noute.common.FontfaceHelper;
 import com.github.pierry.noute.domain.Note;
 import com.github.pierry.noute.ui.fragments.AlertFragment;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
@@ -27,6 +28,7 @@ import org.androidannotations.annotations.ViewById;
 
   private Context context;
   private FragmentManager fragmentManager;
+  private Note note;
 
   public NoteView(Context context) {
     super(context);
@@ -44,23 +46,22 @@ import org.androidannotations.annotations.ViewById;
   }
 
   @UiThread public void bind(final Note note, final int position) {
+    this.note = note;
     face();
     title.setText(note.getTitle());
     content.setText(note.getContent());
     String date = DateHelper.date(note.getTimestamp());
     timestamp.setText(date);
-    this.setOnLongClickListener(new View.OnLongClickListener() {
-      @Override public boolean onLongClick(View view) {
-        FragmentTransaction ft = fragmentManager.beginTransaction();
-        DialogFragment newFragment = AlertFragment.newInstance(note);
-        newFragment.show(fragmentManager, "dialog");
-        return true;
-      }
-    });
     String color = "#EAEAEA";
     if (note.getBackgroundColor() != null) {
       color = note.getBackgroundColor();
     }
     cardView.setCardBackgroundColor(Color.parseColor(color));
+  }
+
+  @Click void cardView(){
+    FragmentTransaction ft = fragmentManager.beginTransaction();
+    DialogFragment newFragment = AlertFragment.newInstance(note);
+    newFragment.show(fragmentManager, "dialog");
   }
 }

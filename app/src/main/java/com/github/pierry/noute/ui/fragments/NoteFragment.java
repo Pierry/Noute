@@ -1,5 +1,7 @@
 package com.github.pierry.noute.ui.fragments;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -32,6 +34,7 @@ import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
+import org.androidannotations.annotations.OnActivityResult;
 import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 
@@ -48,6 +51,7 @@ import org.androidannotations.annotations.ViewById;
   @Bean(NoteAdapter.class) NoteAdapter noteAdapter;
 
   private List<Note> notes = new ArrayList<>();
+  private static final int REQUEST_CODE = 1;
 
   @AfterViews void init() {
     setHasOptionsMenu(true);
@@ -93,7 +97,7 @@ import org.androidannotations.annotations.ViewById;
     load();
   }
 
-  @Background void load() {
+  @Background public void load() {
     notes = noteService.getAll();
     hideLoader();
     adapter();
@@ -154,4 +158,5 @@ import org.androidannotations.annotations.ViewById;
     hideLoader();
     adapter();
   }
+
 }

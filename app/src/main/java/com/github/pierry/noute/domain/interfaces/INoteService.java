@@ -20,4 +20,5 @@ public interface INoteService {
   void delete(long id);
 
   List<Note> getFavs();
+
 }
