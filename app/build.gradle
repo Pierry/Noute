@@ -54,6 +54,7 @@ dependencies {
   compile('com.crashlytics.sdk.android:crashlytics:2.6.1@aar') {
     transitive = true;
   }
+  testCompile "org.robolectric:robolectric:3.1.2"
 }
 
 apt {
