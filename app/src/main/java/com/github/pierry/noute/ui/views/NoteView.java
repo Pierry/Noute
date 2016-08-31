@@ -6,7 +6,6 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.CardView;
-import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.github.pierry.noute.R;
@@ -21,7 +20,7 @@ import org.androidannotations.annotations.ViewById;
 
 @EViewGroup(R.layout.adapter_note) public class NoteView extends RelativeLayout {
 
-  @ViewById TextView content;
+  @ViewById TextView noteContent;
   @ViewById TextView title;
   @ViewById TextView timestamp;
   @ViewById CardView cardView;
@@ -41,7 +40,7 @@ import org.androidannotations.annotations.ViewById;
 
   @UiThread public void face() {
     FontfaceHelper.setFontFace(context, title);
-    FontfaceHelper.setFontFace(context, content);
+    FontfaceHelper.setFontFace(context, noteContent);
     FontfaceHelper.setFontFace(context, timestamp);
   }
 
@@ -49,7 +48,7 @@ import org.androidannotations.annotations.ViewById;
     this.note = note;
     face();
     title.setText(note.getTitle());
-    content.setText(note.getContent());
+    noteContent.setText(note.getContent());
     String date = DateHelper.date(note.getTimestamp());
     timestamp.setText(date);
     String color = "#EAEAEA";
