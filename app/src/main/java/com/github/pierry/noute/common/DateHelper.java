@@ -36,34 +36,18 @@ public class DateHelper {
     return null;
   }
 
-  public static String dateTimeFormat(String date) {
-    String month = date.substring(5, 7);
-    String day = date.substring(8, 10);
-    String hour = date.substring(11, 13);
-    String minute = date.substring(14, 16);
-    return day + "/" + month + " - " + hour + ":" + minute;
-  }
-
   public static String date(String date) {
     try {
       Date parsedDate = parseDate(date);
       if (parsedDate == null) {
         return date;
       }
-      SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM - HH:mm");
+      SimpleDateFormat dateFormat = new SimpleDateFormat("dd' de 'MMM', 'HH:mm");
       String formatted = dateFormat.format(parsedDate);
       return formatted;
     } catch (Exception e){
       return date;
     }
-  }
-
-  public static String hour(String date) {
-    String month = date.substring(5, 7);
-    String day = date.substring(8, 10);
-    String hour = date.substring(11, 13);
-    String minute = date.substring(14, 16);
-    return hour + ":" + minute;
   }
 
   public static String month(String date) {
