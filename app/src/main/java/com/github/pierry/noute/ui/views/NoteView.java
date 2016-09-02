@@ -58,7 +58,7 @@ import org.androidannotations.annotations.ViewById;
     cardView.setCardBackgroundColor(Color.parseColor(color));
   }
 
-  @Click void cardView(){
+  @Click void cardView() {
     FragmentTransaction ft = fragmentManager.beginTransaction();
     DialogFragment newFragment = AlertFragment.newInstance(note);
     newFragment.show(fragmentManager, "dialog");

@@ -1,12 +1,12 @@
 package com.github.pierry.noute.ui.fragments;
 
-import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.widget.SwitchCompat;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.TextView;
 import com.github.pierry.noute.R;
 import com.github.pierry.noute.common.FontfaceHelper;
@@ -25,6 +25,8 @@ import org.androidannotations.annotations.ViewById;
     implements CompoundButton.OnCheckedChangeListener {
 
   @ViewById TextView custom;
+  @ViewById EditText title;
+  @ViewById EditText content;
   @ViewById SwitchCompat switchCompat;
   @ViewById TextView favorite;
   @ViewById TextView selectColor;
@@ -61,6 +63,13 @@ import org.androidannotations.annotations.ViewById;
     switchCompat.setOnCheckedChangeListener(this);
     faces();
     note = (Note) getArguments().get("note");
+    title.setText(note.getTitle());
+    content.setText(note.getContent());
+    if (note.isFav()) {
+      switchCompat.setChecked(true);
+      return;
+    }
+    switchCompat.setChecked(false);
   }
 
   @UiThread void faces() {
@@ -108,7 +117,11 @@ import org.androidannotations.annotations.ViewById;
   }
 
   @Click void ok() {
+    note.changeTitle(title.getText().toString());
+    note.changeContent(content.getText().toString());
+    noteService.update(note);
     getDialog().dismiss();
+    getActivity().recreate();
   }
 
   @UiThread void favorite() {
@@ -152,6 +165,9 @@ import org.androidannotations.annotations.ViewById;
   }
 
   @Override public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+    if (note.isFav() == b) {
+      return;
+    }
     if (b) {
       favorite();
     } else {

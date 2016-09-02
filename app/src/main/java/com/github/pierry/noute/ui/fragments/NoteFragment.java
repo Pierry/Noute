@@ -1,7 +1,5 @@
 package com.github.pierry.noute.ui.fragments;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -34,7 +32,6 @@ import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
-import org.androidannotations.annotations.OnActivityResult;
 import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 
@@ -82,8 +79,13 @@ import org.androidannotations.annotations.ViewById;
 
   @Click void add() {
     String contentText = content.getText().toString();
-    String[] splited = contentText.split("\n\n");
-    Note note = new Note(splited[0], splited[1]);
+    Note note = null;
+    if (!contentText.contains("\n\n")) {
+      note = new Note(contentText, "");
+    } else {
+      String[] splited = contentText.split("\n\n");
+      note = new Note(splited[0], splited[1]);
+    }
     noteService.create(note);
     notes.add(0, note);
     noteAdapter.notifyDataSetChanged();
@@ -158,5 +160,4 @@ import org.androidannotations.annotations.ViewById;
     hideLoader();
     adapter();
   }
-
 }

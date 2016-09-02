@@ -1,19 +1,8 @@
 package com.github.pierry.noute.ui.adapter;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-import com.github.pierry.noute.R;
-import com.github.pierry.noute.common.DateHelper;
-import com.github.pierry.noute.common.FontfaceHelper;
 import com.github.pierry.noute.domain.Note;
 import com.github.pierry.noute.domain.interfaces.INoteService;
 import com.github.pierry.noute.services.NoteService;

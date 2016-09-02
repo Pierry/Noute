@@ -45,6 +45,14 @@ import org.threeten.bp.Instant;
     this.kind = kind;
   }
 
+  public void changeTitle(String title) {
+    this.title = title;
+  }
+
+  public void changeContent(String content) {
+    this.content = content;
+  }
+
   public String getContent() {
     return content;
   }
@@ -59,6 +67,10 @@ import org.threeten.bp.Instant;
 
   public String getTitle() {
     return title;
+  }
+
+  public boolean isFav() {
+    return isFav;
   }
 
   @Override public int describeContents() {
