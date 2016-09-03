@@ -8,4 +8,19 @@
       app:showAsAction="always"
       app:actionViewClass="android.support.v7.widget.SearchView">
   </item>
+  <item
+      android:icon="@mipmap/icon_options"
+      android:title="Opções"
+      app:showAsAction="ifRoom">
+    <menu>
+      <item
+          android:id="@+id/actionOrganize"
+          android:title="Ordenar"
+          app:showAsAction="ifRoom"/>
+      <item
+          android:id="@+id/actionView"
+          android:title="Alterar visualização"
+          app:showAsAction="ifRoom"/>
+    </menu>
+  </item>
 </menu>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <color name="colorPrimary">#F44336</color>
-  <color name="colorPrimaryDark">#D32F2F</color>
+  <color name="colorPrimary">#89d146</color>
+  <color name="colorPrimaryDark">#4e7827</color>
   <color name="primary_light">#FFCDD2</color>
   <color name="colorAccent">#969695</color>
   <color name="primary_text">#212121</color>
@@ -9,12 +9,26 @@
   <color name="icons">#FFFFFF</color>
   <color name="divider">#B6B6B6</color>
   <color name="nt_silver">#EAEAEA</color>
-  <color name="nt_black">#000000</color>
-  <color name="nt_gray">#666666</color>
   <color name="nt_white">#FFFFFF</color>
-  <color name="nt_blue">#0066CC</color>
   <color name="nt_red_card">#fdc0c0</color>
   <color name="nt_blue_card">#d7eafc</color>
   <color name="nt_yellow_card">#ffffd8</color>
   <color name="nt_silver_card">#eaeaea</color>
+  <color name="nt_danger">#c44d4f</color>
+  <color name="nt_darkdanger">#702a2b</color>
+  <color name="nt_success">#679768</color>
+  <color name="nt_default">#ffffff</color>
+  <color name="nt_darkdefault">#e7e7e7</color>
+  <color name="nt_darksuccess">#456646</color>
+  <color name="nt_primary">#5a8fac</color>
+  <color name="nt_darkprimary">#345263</color>
+  <color name="nt_pink">#f7398b</color>
+  <color name="nt_ligthpink">#ff98c5</color>
+  <color name="nt_orange">#ff9b54</color>
+  <color name="nt_yellow">#ffe958</color>
+  <color name="nt_green">#4ef564</color>
+  <color name="nt_lightgreen">#96f4a2</color>
+  <color name="nt_blue">#75a8fa</color>
+  <color name="nt_gray">#b1b1b1</color>
+  <color name="nt_black">#000000</color>
 </resources>

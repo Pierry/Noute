@@ -15,4 +15,5 @@
   <dimen name="tab_size">30dp</dimen>
   <dimen name="margin_2dp">2dp</dimen>
   <dimen name="box_color">30dp</dimen>
+  <dimen name="margin_large">40dp</dimen>
 </resources>

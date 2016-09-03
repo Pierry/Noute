@@ -35,14 +35,24 @@ import org.androidannotations.annotations.EBean;
   }
 
   @Override public List<Note> getByContent(String content) {
-    return new Select().from(Note.class).
-        where("Title like '%" + content + "%' OR Content like '%" + content + "%'").orderBy("Timestamp DESC").execute();
+    return new Select().from(Note.class)
+        .
+            where("Title like '%" + content + "%' OR Content like '%" + content + "%'")
+        .orderBy("Timestamp DESC")
+        .execute();
   }
 
   @Override public List<Note> getByTimestamp(String timestamp) {
     return new Select().from(Note.class).
-        where("Timestamp = '" + timestamp + "'")
-        .orderBy("Timestamp DESC").execute();
+        where("Timestamp = '" + timestamp + "'").orderBy("Timestamp DESC").execute();
+  }
+
+  @Override public List<Note> getByDatetime(int page) {
+    return new Select().from(Note.class).orderBy("Timestamp DESC").offset(page).limit(20).execute();
+  }
+
+  @Override public List<Note> getByColor(int page) {
+    return new Select().from(Note.class).orderBy("BackgroundColor DESC").offset(page).limit(20).execute();
   }
 
   @Override public List<Note> getByKind(long id) {

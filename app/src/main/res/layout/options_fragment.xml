@@ -14,25 +14,37 @@
         android:id="@+id/layoutEdit"
         android:animateLayoutChanges="true"
         android:layout_height="wrap_content">
-      <EditText
+      <LinearLayout
+          android:orientation="vertical"
           android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:textSize="@dimen/font_large"
-          android:id="@+id/title"
-          android:layout_marginLeft="@dimen/default_margin"
-          android:layout_marginTop="@dimen/default_margin"
-          android:layout_marginRight="@dimen/default_margin"/>
-      <EditText
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:textSize="@dimen/font_small"
-          android:padding="@dimen/default_margin"
-          android:id="@+id/content"
-          android:textColorHint="@color/nt_gray"
-          android:textColor="@color/nt_black"
-          android:layout_margin="@dimen/margin_small"
           android:background="@drawable/back_edittext"
-          android:textCursorDrawable="@drawable/text_cursor_cyan"/>
+          android:layout_height="wrap_content">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_large"
+            android:padding="@dimen/default_margin"
+            android:id="@+id/title"
+            android:textColorHint="@color/nt_gray"
+            android:textColor="@color/nt_black"
+            android:background="@null"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginRight="@dimen/margin_small"
+            android:layout_marginLeft="@dimen/margin_small"
+            android:textCursorDrawable="@drawable/text_cursor_cyan"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/default_margin"
+            android:id="@+id/content"
+            android:textColorHint="@color/nt_gray"
+            android:background="@null"
+            android:textColor="@color/nt_black"
+            android:layout_marginLeft="@dimen/margin_small"
+            android:layout_marginRight="@dimen/margin_small"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:textCursorDrawable="@drawable/text_cursor_cyan"/>
+      </LinearLayout>
       <TextView
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
@@ -88,23 +100,31 @@
             android:textColor="@color/nt_gray"/>
         <Button
             android:layout_toRightOf="@+id/selectColor"
-            android:background="@color/nt_red_card"
-            android:id="@+id/red"
+            android:background="@color/nt_pink"
+            android:id="@+id/pink"
             android:layout_marginLeft="@dimen/margin_small"
             android:layout_marginTop="@dimen/default_margin"
             android:layout_width="@dimen/box_color"
             android:layout_height="@dimen/box_color"/>
         <Button
-            android:layout_toRightOf="@+id/red"
-            android:background="@color/nt_blue_card"
-            android:id="@+id/blue"
+            android:layout_toRightOf="@+id/pink"
+            android:background="@color/nt_ligthpink"
+            android:id="@+id/lightpink"
             android:layout_marginLeft="@dimen/margin_small"
             android:layout_marginTop="@dimen/default_margin"
             android:layout_width="@dimen/box_color"
             android:layout_height="@dimen/box_color"/>
         <Button
-            android:layout_toRightOf="@+id/blue"
-            android:background="@color/nt_yellow_card"
+            android:layout_toRightOf="@+id/lightpink"
+            android:background="@color/nt_orange"
+            android:id="@+id/orange"
+            android:layout_marginLeft="@dimen/margin_small"
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_width="@dimen/box_color"
+            android:layout_height="@dimen/box_color"/>
+        <Button
+            android:layout_toRightOf="@+id/orange"
+            android:background="@color/nt_yellow"
             android:id="@+id/yellow"
             android:layout_marginLeft="@dimen/margin_small"
             android:layout_marginTop="@dimen/default_margin"
@@ -112,61 +132,80 @@
             android:layout_height="@dimen/box_color"/>
         <Button
             android:layout_toRightOf="@+id/yellow"
+            android:background="@color/nt_green"
+            android:id="@+id/green"
+            android:layout_marginLeft="@dimen/margin_small"
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_width="@dimen/box_color"
+            android:layout_height="@dimen/box_color"/>
+        <Button
+            android:layout_toRightOf="@+id/selectColor"
+            android:background="@color/nt_lightgreen"
+            android:id="@+id/lightgreen"
+            android:layout_below="@+id/pink"
+            android:layout_marginLeft="@dimen/margin_small"
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_width="@dimen/box_color"
+            android:layout_height="@dimen/box_color"/>
+        <Button
+            android:layout_toRightOf="@+id/lightgreen"
+            android:background="@color/nt_blue"
+            android:id="@+id/blue"
+            android:layout_below="@+id/pink"
+            android:layout_marginLeft="@dimen/margin_small"
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_width="@dimen/box_color"
+            android:layout_height="@dimen/box_color"/>
+        <Button
+            android:layout_toRightOf="@+id/blue"
+            android:background="@color/nt_gray"
+            android:id="@+id/gray"
+            android:layout_below="@+id/pink"
+            android:layout_marginLeft="@dimen/margin_small"
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_width="@dimen/box_color"
+            android:layout_height="@dimen/box_color"/>
+        <Button
+            android:layout_toRightOf="@+id/gray"
             android:background="@color/nt_white"
             android:id="@+id/white"
+            android:layout_below="@+id/pink"
             android:layout_marginLeft="@dimen/margin_small"
             android:layout_marginTop="@dimen/default_margin"
             android:layout_width="@dimen/box_color"
             android:layout_height="@dimen/box_color"/>
         <Button
             android:layout_toRightOf="@+id/white"
-            android:background="@color/nt_silver_card"
-            android:id="@+id/silver"
+            android:background="@color/nt_black"
+            android:id="@+id/black"
+            android:layout_below="@+id/pink"
             android:layout_marginLeft="@dimen/margin_small"
             android:layout_marginTop="@dimen/default_margin"
             android:layout_width="@dimen/box_color"
             android:layout_height="@dimen/box_color"/>
 
       </RelativeLayout>
-      <TextView
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:text="@string/card_actions"
-          android:textSize="@dimen/font_small"
-          android:id="@+id/actions"
-          android:layout_marginLeft="@dimen/default_margin"
-          android:layout_marginTop="@dimen/default_margin"
-          android:layout_marginRight="@dimen/default_margin"
-          android:textColor="@color/nt_blue"/>
-      <View
-          android:background="@color/nt_silver"
-          android:layout_marginLeft="@dimen/default_margin"
-          android:layout_marginBottom="@dimen/default_margin"
-          android:layout_marginRight="@dimen/default_margin"
-          android:layout_marginTop="@dimen/margin_small"
-          android:layout_width="wrap_content"
-          android:layout_height="@dimen/margin_2dp"/>
       <Button
           android:id="@+id/remove"
           android:text="@string/delete"
-          android:textColor="@color/nt_black"
+          android:textColor="@color/nt_white"
           android:padding="@dimen/margin_small"
           android:layout_marginLeft="@dimen/default_margin"
           android:layout_marginRight="@dimen/default_margin"
-          android:layout_marginTop="@dimen/default_margin"
-          android:background="@color/nt_silver"
+          android:layout_marginTop="@dimen/margin_large"
+          android:background="@drawable/danger_button"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"/>
       <Button
           android:id="@+id/ok"
           android:text="@string/ok"
-          android:textColor="@color/nt_black"
+          android:textColor="@color/nt_white"
           android:padding="@dimen/margin_small"
           android:layout_marginLeft="@dimen/default_margin"
           android:layout_marginRight="@dimen/default_margin"
-          android:layout_marginTop="@dimen/default_margin"
+          android:layout_marginTop="@dimen/margin_small"
           android:layout_marginBottom="@dimen/default_margin"
-          android:background="@color/nt_silver"
+          android:background="@drawable/primary_button"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"/>
     </LinearLayout>

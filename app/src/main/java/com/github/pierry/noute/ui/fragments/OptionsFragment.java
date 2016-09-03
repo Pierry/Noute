@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.widget.SwitchCompat;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -21,7 +22,7 @@ import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 
-@EFragment(R.layout.card_actions) public class AlertFragment extends DialogFragment
+@EFragment(R.layout.options_fragment) public class OptionsFragment extends DialogFragment
     implements CompoundButton.OnCheckedChangeListener {
 
   @ViewById TextView custom;
@@ -30,12 +31,16 @@ import org.androidannotations.annotations.ViewById;
   @ViewById SwitchCompat switchCompat;
   @ViewById TextView favorite;
   @ViewById TextView selectColor;
-  @ViewById TextView actions;
-  @ViewById Button red;
-  @ViewById Button white;
-  @ViewById Button blue;
+  @ViewById Button pink;
+  @ViewById Button lightpink;
+  @ViewById Button orange;
   @ViewById Button yellow;
-  @ViewById Button silver;
+  @ViewById Button green;
+  @ViewById Button lightgreen;
+  @ViewById Button blue;
+  @ViewById Button gray;
+  @ViewById Button black;
+  @ViewById Button white;
   @ViewById Button remove;
   @ViewById Button ok;
 
@@ -43,14 +48,24 @@ import org.androidannotations.annotations.ViewById;
 
   private Note note;
 
-  private static final int REQUEST_CODE = 1;
+  public static final String PINK_COLOR = "#f7398b";
+  public static final String LIGHT_PINK_COLOR = "#ff98c5";
+  public static final String ORANGE_COLOR = "#ff9b54";
+  public static final String YELLOW_COLOR = "#ffe958";
+  public static final String GREEN_COLOR = "#4ef564";
+  public static final String LIGHT_GREEN_COLOR = "#96f4a2";
+  public static final String BLUE_COLOR = "#75a8fa";
+  public static final String GRAY_COLOR = "#b1b1b1";
+  public static final String BLACK_COLOR = "#000000";
+  public static final String WHITE_COLOR = "#FFFFFF";
 
   enum colors {
-    RED, BLUE, YELLOW, SILVER, WHITE
+    PINK_COLOR, LIGHT_PINK_COLOR, ORANGE_COLOR, YELLOW_COLOR, GREEN_COLOR,
+    LIGHT_GREEN_COLOR, BLUE_COLOR, GRAY_COLOR, BLACK_COLOR, WHITE_COLOR
   }
 
-  public static AlertFragment_ newInstance(Note note) {
-    AlertFragment_ f = new AlertFragment_();
+  public static OptionsFragment_ newInstance(Note note) {
+    OptionsFragment_ f = new OptionsFragment_();
     Bundle args = new Bundle();
     args.putParcelable("note", note);
     f.setArguments(args);
@@ -59,7 +74,7 @@ import org.androidannotations.annotations.ViewById;
   }
 
   @AfterViews void init() {
-    getDialog().setTitle(R.string.dialog_title);
+    getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
     switchCompat.setOnCheckedChangeListener(this);
     faces();
     note = (Note) getArguments().get("note");
@@ -76,44 +91,75 @@ import org.androidannotations.annotations.ViewById;
     FontfaceHelper.setFontFace(getActivity(), custom);
     FontfaceHelper.setFontFace(getActivity(), favorite);
     FontfaceHelper.setFontFace(getActivity(), selectColor);
-    FontfaceHelper.setFontFace(getActivity(), actions);
     FontfaceHelper.setFontFace(getActivity(), remove);
     FontfaceHelper.setFontFace(getActivity(), ok);
   }
 
-  @Click void red() {
-    note.changeBackground("#fdc0c0");
+  @Click void pink() {
+    note.changeBackground(PINK_COLOR);
     noteService.update(note);
-    colors(colors.RED);
+    colors(colors.PINK_COLOR);
   }
 
-  @Click void blue() {
-    note.changeBackground("#d7eafc");
+  @Click void lightpink() {
+    note.changeBackground(LIGHT_PINK_COLOR);
     noteService.update(note);
-    colors(colors.BLUE);
+    colors(colors.LIGHT_PINK_COLOR);
+  }
+
+  @Click void orange() {
+    note.changeBackground(ORANGE_COLOR);
+    noteService.update(note);
+    colors(colors.ORANGE_COLOR);
   }
 
   @Click void yellow() {
-    note.changeBackground("#ecec9b");
+    note.changeBackground(YELLOW_COLOR);
     noteService.update(note);
-    colors(colors.YELLOW);
+    colors(colors.YELLOW_COLOR);
   }
 
-  @Click void silver() {
-    note.changeBackground("#c2c1c1");
+  @Click void lightgreen() {
+    note.changeBackground(LIGHT_GREEN_COLOR);
     noteService.update(note);
-    colors(colors.SILVER);
+    colors(colors.LIGHT_GREEN_COLOR);
   }
 
-  @Click void white() {
-    note.changeBackground("#ffffff");
+  @Click void green() {
+    note.changeBackground(GREEN_COLOR);
     noteService.update(note);
-    colors(colors.WHITE);
+    colors(colors.GREEN_COLOR);
   }
 
   @Click void remove() {
     noteService.delete(note.getId());
+    getDialog().dismiss();
+    getActivity().recreate();
     SimpleToast.error(getActivity(), getActivity().getResources().getString(R.string.deleted));
+  }
+
+  @Click void blue() {
+    note.changeBackground(BLUE_COLOR);
+    noteService.update(note);
+    colors(colors.BLUE_COLOR);
+  }
+
+  @Click void gray() {
+    note.changeBackground(GRAY_COLOR);
+    noteService.update(note);
+    colors(colors.GRAY_COLOR);
+  }
+
+  @Click void black() {
+    note.changeBackground(BLACK_COLOR);
+    noteService.update(note);
+    colors(colors.BLACK_COLOR);
+  }
+
+  @Click void white() {
+    note.changeBackground(WHITE_COLOR);
+    noteService.update(note);
+    colors(colors.WHITE_COLOR);
   }
 
   @Click void ok() {
@@ -140,26 +186,47 @@ import org.androidannotations.annotations.ViewById;
   }
 
   @UiThread void colors(colors colors) {
-    red.setBackgroundColor(Color.parseColor("#fdc0c0"));
-    blue.setBackgroundColor(Color.parseColor("#d7eafc"));
-    yellow.setBackgroundColor(Color.parseColor("#ffffd8"));
-    silver.setBackgroundColor(Color.parseColor("#EAEAEA"));
-    white.setBackgroundColor(Color.parseColor("#ffffff"));
+    pink.setAlpha(0.5f);
+    lightpink.setAlpha(0.5f);
+    orange.setAlpha(0.5f);
+    yellow.setAlpha(0.5f);
+    green.setAlpha(0.5f);
+    lightgreen.setAlpha(0.5f);
+    blue.setAlpha(0.5f);
+    gray.setAlpha(0.5f);
+    black.setAlpha(0.5f);
+    white.setAlpha(0.5f);
+
     switch (colors) {
-      case RED:
-        red.setBackgroundColor(Color.parseColor("#f48f8f"));
+      case PINK_COLOR:
+        pink.setAlpha(1f);
         break;
-      case BLUE:
-        blue.setBackgroundColor(Color.parseColor("#9dc7ef"));
+      case LIGHT_PINK_COLOR:
+        lightpink.setAlpha(1f);
         break;
-      case YELLOW:
-        yellow.setBackgroundColor(Color.parseColor("#f2f28d"));
+      case ORANGE_COLOR:
+        orange.setAlpha(1f);
         break;
-      case SILVER:
-        silver.setBackgroundColor(Color.parseColor("#d2d2d2"));
+      case YELLOW_COLOR:
+        yellow.setAlpha(1f);
         break;
-      case WHITE:
-        white.setBackgroundColor(Color.parseColor("#eaeaea"));
+      case GREEN_COLOR:
+        green.setAlpha(1f);
+        break;
+      case LIGHT_GREEN_COLOR:
+        lightgreen.setAlpha(1f);
+        break;
+      case BLUE_COLOR:
+        blue.setAlpha(1f);
+        break;
+      case GRAY_COLOR:
+        gray.setAlpha(1f);
+        break;
+      case BLACK_COLOR:
+        black.setAlpha(1f);
+        break;
+      case WHITE_COLOR:
+        white.setAlpha(1f);
         break;
     }
   }

@@ -4,9 +4,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
-import android.view.Window;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import com.astuetz.PagerSlidingTabStrip;
 import com.github.pierry.noute.ui.adapter.MainAdapter;
 import com.github.pierry.noute.ui.common.ToolbarBase;
@@ -16,9 +13,8 @@ import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Fullscreen;
 import org.androidannotations.annotations.ViewById;
-import org.androidannotations.annotations.WindowFeature;
 
-@Fullscreen @EActivity(R.layout.activity_main) public class MainActivity extends AppCompatActivity
+@Fullscreen @EActivity(R.layout.main_activity) public class MainActivity extends AppCompatActivity
     implements ViewPager.OnPageChangeListener {
 
   @ViewById PagerSlidingTabStrip tabs;

@@ -14,6 +14,16 @@
       android:background="@android:color/transparent"
       android:layout_centerInParent="true"
   />
+  <com.github.pierry.fitloader.RotateLoading
+      android:id="@+id/rotateLoadingBottom"
+      android:layout_width="@dimen/rotate_loading"
+      android:visibility="gone"
+      android:layout_height="@dimen/rotate_loading"
+      app:loading_width="@dimen/rotate_loading_width"
+      android:layout_alignParentBottom="true"
+      android:background="@android:color/transparent"
+      android:layout_centerHorizontal="true"
+  />
   <LinearLayout android:layout_width="match_parent"
       android:orientation="vertical"
       android:id="@+id/layoutEdit"
@@ -23,7 +33,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/type_your_text"
-        android:textSize="@dimen/font_small"
         android:padding="@dimen/default_margin"
         android:id="@+id/content"
         android:textColorHint="@color/nt_gray"

@@ -1,9 +1,13 @@
 package com.github.pierry.noute.ui.fragments;
 
+import android.content.Context;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -20,10 +24,12 @@ import com.github.pierry.fitloader.RotateLoading;
 import com.github.pierry.noute.MainActivity;
 import com.github.pierry.noute.R;
 import com.github.pierry.noute.common.FontfaceHelper;
+import com.github.pierry.noute.common.MyPrefs_;
 import com.github.pierry.noute.domain.Note;
 import com.github.pierry.noute.domain.interfaces.INoteService;
 import com.github.pierry.noute.services.NoteService;
 import com.github.pierry.noute.ui.adapter.NoteAdapter;
+import com.github.pwittchen.infinitescroll.library.InfiniteScrollListener;
 import java.util.ArrayList;
 import java.util.List;
 import org.androidannotations.annotations.AfterTextChange;
@@ -32,12 +38,15 @@ import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
+import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
+import org.androidannotations.annotations.sharedpreferences.Pref;
 
 @EFragment(R.layout.note_fragment) public class NoteFragment extends Fragment {
 
   @ViewById RotateLoading rotateLoading;
+  @ViewById RotateLoading rotateLoadingBottom;
   @ViewById RelativeLayout body;
   @ViewById RecyclerView recyclerView;
   @ViewById EditText content;
@@ -47,14 +56,25 @@ import org.androidannotations.annotations.ViewById;
   @Bean(NoteService.class) INoteService noteService;
   @Bean(NoteAdapter.class) NoteAdapter noteAdapter;
 
+  @Pref MyPrefs_ myPrefs;
+
+  private static final int FIRST_PAGE = 0;
+  public static String GRID = "grid";
+  public static String LINEAR = "linear";
+
   private List<Note> notes = new ArrayList<>();
-  private static final int REQUEST_CODE = 1;
+  private int page = 0;
+  private int lastVisibleItem;
+
+  private LinearLayoutManager linearManager;
+  private GridLayoutManager gridManager;
+  private InfiniteScrollListener infiniteScroll;
 
   @AfterViews void init() {
     setHasOptionsMenu(true);
     faces();
     showLoader();
-    recyclerViewConfig();
+    loadView();
     noteAdapter.fragmentManagerInject(getActivity().getSupportFragmentManager());
     swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
       @Override public void onRefresh() {
@@ -86,21 +106,57 @@ import org.androidannotations.annotations.ViewById;
       String[] splited = contentText.split("\n\n");
       note = new Note(splited[0], splited[1]);
     }
+    note.changeBackground(OptionsFragment.WHITE_COLOR);
     noteService.create(note);
     notes.add(0, note);
     noteAdapter.notifyDataSetChanged();
     content.setText("");
   }
 
-  @UiThread void recyclerViewConfig() {
-    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
-    recyclerView.setLayoutManager(layoutManager);
+  @UiThread void gridView() {
+    gridManager = new GridLayoutManager(getActivity(), 2);
+    gridManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+      @Override public int getSpanSize(int position) {
+        return 1;
+      }
+    });
+    recyclerView.setLayoutManager(gridManager);
     recyclerView.setItemAnimator(new DefaultItemAnimator());
     load();
   }
 
-  @Background public void load() {
-    notes = noteService.getAll();
+  @UiThread void linearView() {
+    linearManager = new LinearLayoutManager(getActivity());
+    recyclerView.setLayoutManager(linearManager);
+    recyclerView.setItemAnimator(new DefaultItemAnimator());
+    load();
+  }
+
+  void load() {
+    if (myPrefs.organize().get().equals("bydate")) {
+      loadByDate();
+    } else {
+      loadByColor();
+    }
+  }
+
+  void loadView() {
+    if (myPrefs.view().get().equals("linear")) {
+      linearView();
+      createInfiniteScrollListener();
+    } else {
+      gridView();
+    }
+  }
+
+  @Background public void loadByColor() {
+    notes = noteService.getByColor(FIRST_PAGE);
+    hideLoader();
+    adapter();
+  }
+
+  @Background public void loadByDate() {
+    notes = noteService.getByDatetime(FIRST_PAGE);
     hideLoader();
     adapter();
   }
@@ -108,6 +164,7 @@ import org.androidannotations.annotations.ViewById;
   @UiThread void adapter() {
     noteAdapter.addItems(notes);
     recyclerView.setAdapter(noteAdapter);
+    //recyclerView.addOnScrollListener(infiniteScroll);
   }
 
   @UiThread void showLoader() {
@@ -155,9 +212,37 @@ import org.androidannotations.annotations.ViewById;
     });
   }
 
+  @UiThread void createInfiniteScrollListener() {
+    final Context context = getActivity();
+    infiniteScroll = new InfiniteScrollListener(20, linearManager) {
+      @Override public void onScrolledToEnd(final int firstVisibleItemPosition) {
+        if (firstVisibleItemPosition == lastVisibleItem) {
+          return;
+        }
+        lastVisibleItem = firstVisibleItemPosition;
+        page++;
+        rotateLoadingBottom.animate();
+        rotateLoadingBottom.setVisibility(View.VISIBLE);
+        refreshView(recyclerView, noteAdapter, firstVisibleItemPosition);
+      }
+    };
+  }
+
   @UiThread void searchAndUpdate(String query) {
     notes = noteService.getByContent(query);
     hideLoader();
     adapter();
+  }
+
+  @OptionsItem(R.id.actionOrganize) void organize() {
+    FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+    DialogFragment newFragment = OrganizeFragment_.newInstance();
+    newFragment.show(getActivity().getSupportFragmentManager(), "organize");
+  }
+
+  @OptionsItem(R.id.actionView) void view() {
+    FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+    DialogFragment newFragment = ViewFragment_.newInstance();
+    newFragment.show(getActivity().getSupportFragmentManager(), "view");
   }
 }

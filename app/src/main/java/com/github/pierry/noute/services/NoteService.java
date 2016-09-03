@@ -13,9 +13,19 @@ import org.androidannotations.annotations.EBean;
 
   @Bean(NoteRepository.class) INoteRepository noteRepository;
 
-  @Override public List<Note> getAll() {
+  @Override public List<Note> getByDatetime(int page) {
     try {
-      return noteRepository.get();
+      page = page * 20;
+      return noteRepository.getByDatetime(page);
+    } catch (Exception e){
+      return Collections.emptyList();
+    }
+  }
+
+  @Override public List<Note> getByColor(int page){
+    try {
+      page = page * 20;
+      return noteRepository.getByColor(page);
     } catch (Exception e){
       return Collections.emptyList();
     }

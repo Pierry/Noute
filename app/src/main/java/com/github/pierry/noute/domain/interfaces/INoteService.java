@@ -5,7 +5,9 @@ import java.util.List;
 
 public interface INoteService {
 
-  List<Note> getAll();
+  List<Note> getByColor(int page);
+
+  List<Note> getByDatetime(int page);
 
   List<Note> getByContent(String content);
 
@@ -20,5 +22,4 @@ public interface INoteService {
   void delete(long id);
 
   List<Note> getFavs();
-
 }

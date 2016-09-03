@@ -1,0 +1,44 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/icons"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+  <RelativeLayout
+      android:id="@+id/layoutMain"
+      android:animateLayoutChanges="true"
+      android:background="@color/icons"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+    <LinearLayout android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/layoutEdit"
+        android:animateLayoutChanges="true"
+        android:layout_height="wrap_content">
+
+      <Button
+          android:id="@+id/byDate"
+          android:text="@string/by_date"
+          android:textColor="@color/nt_black"
+          android:padding="@dimen/margin_small"
+          android:layout_marginLeft="@dimen/default_margin"
+          android:layout_marginRight="@dimen/default_margin"
+          android:layout_marginTop="@dimen/margin_large"
+          android:background="@drawable/default_button"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"/>
+
+      <Button
+          android:id="@+id/byColor"
+          android:text="@string/by_color"
+          android:textColor="@color/nt_black"
+          android:padding="@dimen/margin_small"
+          android:layout_marginLeft="@dimen/default_margin"
+          android:layout_marginRight="@dimen/default_margin"
+          android:layout_marginTop="@dimen/margin_small"
+          android:layout_marginBottom="@dimen/default_margin"
+          android:background="@drawable/default_button"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"/>
+    </LinearLayout>
+  </RelativeLayout>
+</ScrollView>

@@ -12,13 +12,13 @@ import com.github.pierry.noute.R;
 import com.github.pierry.noute.common.DateHelper;
 import com.github.pierry.noute.common.FontfaceHelper;
 import com.github.pierry.noute.domain.Note;
-import com.github.pierry.noute.ui.fragments.AlertFragment;
+import com.github.pierry.noute.ui.fragments.OptionsFragment;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 
-@EViewGroup(R.layout.adapter_note) public class NoteView extends RelativeLayout {
+@EViewGroup(R.layout.note_adapter) public class NoteView extends RelativeLayout {
 
   @ViewById TextView noteContent;
   @ViewById TextView title;
@@ -54,13 +54,65 @@ import org.androidannotations.annotations.ViewById;
     String color = "#EAEAEA";
     if (note.getBackgroundColor() != null) {
       color = note.getBackgroundColor();
+      switch (color) {
+        case OptionsFragment.PINK_COLOR:
+          title.setTextColor(getResources().getColor(R.color.nt_white));
+          noteContent.setTextColor(getResources().getColor(R.color.nt_white));
+          timestamp.setTextColor(getResources().getColor(R.color.nt_white));
+          break;
+        case OptionsFragment.LIGHT_PINK_COLOR:
+          title.setTextColor(getResources().getColor(R.color.nt_black));
+          noteContent.setTextColor(getResources().getColor(R.color.nt_black));
+          timestamp.setTextColor(getResources().getColor(R.color.nt_black));
+          break;
+        case OptionsFragment.ORANGE_COLOR:
+          title.setTextColor(getResources().getColor(R.color.nt_black));
+          noteContent.setTextColor(getResources().getColor(R.color.nt_black));
+          timestamp.setTextColor(getResources().getColor(R.color.nt_black));
+          break;
+        case OptionsFragment.YELLOW_COLOR:
+          title.setTextColor(getResources().getColor(R.color.nt_black));
+          noteContent.setTextColor(getResources().getColor(R.color.nt_black));
+          timestamp.setTextColor(getResources().getColor(R.color.nt_black));
+          break;
+        case OptionsFragment.GREEN_COLOR:
+          title.setTextColor(getResources().getColor(R.color.nt_black));
+          noteContent.setTextColor(getResources().getColor(R.color.nt_black));
+          timestamp.setTextColor(getResources().getColor(R.color.nt_black));
+          break;
+        case OptionsFragment.LIGHT_GREEN_COLOR:
+          title.setTextColor(getResources().getColor(R.color.nt_black));
+          noteContent.setTextColor(getResources().getColor(R.color.nt_black));
+          timestamp.setTextColor(getResources().getColor(R.color.nt_black));
+          break;
+        case OptionsFragment.BLUE_COLOR:
+          title.setTextColor(getResources().getColor(R.color.nt_white));
+          noteContent.setTextColor(getResources().getColor(R.color.nt_white));
+          timestamp.setTextColor(getResources().getColor(R.color.nt_white));
+          break;
+        case OptionsFragment.GRAY_COLOR:
+          title.setTextColor(getResources().getColor(R.color.nt_black));
+          noteContent.setTextColor(getResources().getColor(R.color.nt_black));
+          timestamp.setTextColor(getResources().getColor(R.color.nt_black));
+          break;
+        case OptionsFragment.BLACK_COLOR:
+          title.setTextColor(getResources().getColor(R.color.nt_white));
+          noteContent.setTextColor(getResources().getColor(R.color.nt_white));
+          timestamp.setTextColor(getResources().getColor(R.color.nt_white));
+          break;
+        case OptionsFragment.WHITE_COLOR:
+          title.setTextColor(getResources().getColor(R.color.nt_black));
+          noteContent.setTextColor(getResources().getColor(R.color.nt_black));
+          timestamp.setTextColor(getResources().getColor(R.color.nt_black));
+          break;
+      }
     }
     cardView.setCardBackgroundColor(Color.parseColor(color));
   }
 
   @Click void cardView() {
     FragmentTransaction ft = fragmentManager.beginTransaction();
-    DialogFragment newFragment = AlertFragment.newInstance(note);
+    DialogFragment newFragment = OptionsFragment.newInstance(note);
     newFragment.show(fragmentManager, "dialog");
   }
 }
