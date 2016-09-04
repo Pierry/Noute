@@ -186,24 +186,13 @@
 
       </RelativeLayout>
       <Button
-          android:id="@+id/remove"
-          android:text="@string/delete"
-          android:textColor="@color/nt_white"
-          android:padding="@dimen/margin_small"
-          android:layout_marginLeft="@dimen/default_margin"
-          android:layout_marginRight="@dimen/default_margin"
-          android:layout_marginTop="@dimen/margin_large"
-          android:background="@drawable/danger_button"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"/>
-      <Button
           android:id="@+id/ok"
           android:text="@string/ok"
           android:textColor="@color/nt_white"
           android:padding="@dimen/margin_small"
           android:layout_marginLeft="@dimen/default_margin"
           android:layout_marginRight="@dimen/default_margin"
-          android:layout_marginTop="@dimen/margin_small"
+          android:layout_marginTop="@dimen/margin_large"
           android:layout_marginBottom="@dimen/default_margin"
           android:background="@drawable/primary_button"
           android:layout_width="match_parent"

@@ -33,8 +33,10 @@
   <string name="removed_from_fav">Removido dos favoritos</string>
   <string name="ok">Concluído</string>
   <string name="by_date">Ordenar por data de criação</string>
-  <string name="by_last_modified">Ordenar por última modificação</string>
+  <string name="by_modified">Ordenar por modificação</string>
   <string name="by_color">Ordenar por cor</string>
   <string name="grid_view">Visualizar Grid</string>
   <string name="linear_view">Visualização Linear</string>
+  <string name="by_alphabetical">Ordem alfabética</string>
+  <string name="delete_confirm">Deseja excluir a nota selecionada?</string>
 </resources>

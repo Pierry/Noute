@@ -2,7 +2,6 @@ package com.github.pierry.noute.ui.fragments;
 
 import android.content.Context;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -43,7 +42,8 @@ import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.sharedpreferences.Pref;
 
-@EFragment(R.layout.note_fragment) public class NoteFragment extends Fragment {
+@EFragment(R.layout.note_fragment) public class NoteFragment extends Fragment
+    implements IBackFragment {
 
   @ViewById RotateLoading rotateLoading;
   @ViewById RotateLoading rotateLoadingBottom;
@@ -106,7 +106,7 @@ import org.androidannotations.annotations.sharedpreferences.Pref;
       String[] splited = contentText.split("\n\n");
       note = new Note(splited[0], splited[1]);
     }
-    note.changeBackground(OptionsFragment.WHITE_COLOR);
+    note.changeBackground(Fragment.WHITE_COLOR);
     noteService.create(note);
     notes.add(0, note);
     noteAdapter.notifyDataSetChanged();
@@ -244,5 +244,11 @@ import org.androidannotations.annotations.sharedpreferences.Pref;
     FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
     DialogFragment newFragment = ViewFragment_.newInstance();
     newFragment.show(getActivity().getSupportFragmentManager(), "view");
+  }
+
+  @Override public void click() {
+    if (add.getVisibility() == View.VISIBLE) {
+      add();
+    }
   }
 }

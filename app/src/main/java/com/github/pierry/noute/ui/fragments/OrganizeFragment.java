@@ -5,7 +5,6 @@ import android.support.v4.app.DialogFragment;
 import android.view.Window;
 import android.widget.Button;
 import com.github.pierry.noute.R;
-import com.github.pierry.noute.common.MyPrefs;
 import com.github.pierry.noute.common.MyPrefs_;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
@@ -17,9 +16,11 @@ import org.androidannotations.annotations.sharedpreferences.Pref;
 
   @ViewById Button byDate;
   @ViewById Button byColor;
+  @ViewById Button byModified;
 
   public static String BY_DATE = "bydate";
   public static String BY_COLOR = "bycolor";
+  public static String BY_MODIFIED = "bymodified";
 
   @Pref MyPrefs_ myPrefs;
 
@@ -45,5 +46,9 @@ import org.androidannotations.annotations.sharedpreferences.Pref;
     myPrefs.edit().organize().put(BY_COLOR).apply();
     getDialog().dismiss();
     getActivity().recreate();
+  }
+
+  @Click void byModified() {
+
   }
 }

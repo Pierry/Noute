@@ -1,5 +1,6 @@
 package com.github.pierry.noute;
 
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -7,7 +8,9 @@ import android.util.TypedValue;
 import com.astuetz.PagerSlidingTabStrip;
 import com.github.pierry.noute.ui.adapter.MainAdapter;
 import com.github.pierry.noute.ui.common.ToolbarBase;
+import com.github.pierry.noute.ui.fragments.IBackFragment;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
+import java.util.List;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
@@ -63,5 +66,27 @@ import org.androidannotations.annotations.ViewById;
 
   @Override public void onPageScrollStateChanged(int state) {
 
+  }
+
+  @Override public void onBackPressed() {
+    int count = getSupportFragmentManager().getBackStackEntryCount();
+    List<Fragment> frags = getSupportFragmentManager().getFragments();
+    Fragment lastFrag = getLastNotNull(frags);
+    //nothing else in back stack || nothing in back stack is instance of our interface
+    if (count == 0 || !(lastFrag instanceof IBackFragment)) {
+      super.onBackPressed();
+    } else {
+      ((IBackFragment) lastFrag).click();
+    }
+  }
+
+  private Fragment getLastNotNull(List<Fragment> list) {
+    for (int i = list.size() - 1; i >= 0; i--) {
+      Fragment frag = list.get(i);
+      if (frag != null) {
+        return frag;
+      }
+    }
+    return null;
   }
 }

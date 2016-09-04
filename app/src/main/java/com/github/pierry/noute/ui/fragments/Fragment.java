@@ -1,6 +1,5 @@
 package com.github.pierry.noute.ui.fragments;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.widget.SwitchCompat;
@@ -22,8 +21,8 @@ import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 
-@EFragment(R.layout.options_fragment) public class OptionsFragment extends DialogFragment
-    implements CompoundButton.OnCheckedChangeListener {
+@EFragment(R.layout.options_fragment) public class Fragment extends DialogFragment
+    implements CompoundButton.OnCheckedChangeListener, IBackFragment {
 
   @ViewById TextView custom;
   @ViewById EditText title;
@@ -41,7 +40,6 @@ import org.androidannotations.annotations.ViewById;
   @ViewById Button gray;
   @ViewById Button black;
   @ViewById Button white;
-  @ViewById Button remove;
   @ViewById Button ok;
 
   @Bean(NoteService.class) INoteService noteService;
@@ -59,13 +57,17 @@ import org.androidannotations.annotations.ViewById;
   public static final String BLACK_COLOR = "#000000";
   public static final String WHITE_COLOR = "#FFFFFF";
 
+  @Override public void click() {
+    ok();
+  }
+
   enum colors {
     PINK_COLOR, LIGHT_PINK_COLOR, ORANGE_COLOR, YELLOW_COLOR, GREEN_COLOR,
     LIGHT_GREEN_COLOR, BLUE_COLOR, GRAY_COLOR, BLACK_COLOR, WHITE_COLOR
   }
 
-  public static OptionsFragment_ newInstance(Note note) {
-    OptionsFragment_ f = new OptionsFragment_();
+  public static Fragment_ newInstance(Note note) {
+    Fragment_ f = new Fragment_();
     Bundle args = new Bundle();
     args.putParcelable("note", note);
     f.setArguments(args);
@@ -91,7 +93,6 @@ import org.androidannotations.annotations.ViewById;
     FontfaceHelper.setFontFace(getActivity(), custom);
     FontfaceHelper.setFontFace(getActivity(), favorite);
     FontfaceHelper.setFontFace(getActivity(), selectColor);
-    FontfaceHelper.setFontFace(getActivity(), remove);
     FontfaceHelper.setFontFace(getActivity(), ok);
   }
 
@@ -131,12 +132,12 @@ import org.androidannotations.annotations.ViewById;
     colors(colors.GREEN_COLOR);
   }
 
-  @Click void remove() {
+  /*@Click void remove() {
     noteService.delete(note.getId());
     getDialog().dismiss();
     getActivity().recreate();
     SimpleToast.error(getActivity(), getActivity().getResources().getString(R.string.deleted));
-  }
+  }*/
 
   @Click void blue() {
     note.changeBackground(BLUE_COLOR);
