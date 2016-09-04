@@ -22,4 +22,6 @@ public interface INoteService {
   void delete(long id);
 
   List<Note> getFavs();
+
+  List<Note> getByAlphabetical(int page);
 }

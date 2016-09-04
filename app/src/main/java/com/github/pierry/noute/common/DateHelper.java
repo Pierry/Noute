@@ -5,10 +5,14 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
+import org.threeten.bp.Instant;
+import org.threeten.bp.ZoneId;
+import org.threeten.bp.ZonedDateTime;
 
 public class DateHelper {
 
-  public static String current(){
+  public static String current() {
     Calendar c = Calendar.getInstance();
     SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.S'Z'");
     String datetime = dateformat.format(c.getTime());
@@ -18,6 +22,7 @@ public class DateHelper {
   private static Date parseDate(String date) {
     ArrayList<String> formats = new ArrayList<String>();
     formats.add("yyyy-MM-dd'T'HH:mm:ss.S'Z'");
+    formats.add("yyyy-MM-dd'T'HH:mm:ss.S");
     formats.add("yyyy-MM-dd'T'HH:mm:ss'Z'");
     formats.add("dd-MM-yyyyd");
     formats.add("yyyyMMdd");
@@ -38,14 +43,15 @@ public class DateHelper {
 
   public static String date(String date) {
     try {
-      Date parsedDate = parseDate(date);
+      String formattedDate = formatTimeZone(date);
+      Date parsedDate = parseDate(formattedDate);
       if (parsedDate == null) {
         return date;
       }
       SimpleDateFormat dateFormat = new SimpleDateFormat("dd' de 'MMM', 'HH:mm");
       String formatted = dateFormat.format(parsedDate);
       return formatted;
-    } catch (Exception e){
+    } catch (Exception e) {
       return date;
     }
   }
@@ -93,17 +99,20 @@ public class DateHelper {
           break;
       }
       return monthAbbr;
-    } catch (Exception e){
+    } catch (Exception e) {
       return date;
     }
   }
 
-  public static String day(String date) {
-    try {
-      String day = date.substring(8, 10);
-      return day;
-    } catch (Exception e){
-      return date;
-    }
+  private static String getTimeZone() {
+    return TimeZone.getDefault().getID();
+  }
+
+  private static String formatTimeZone(String timestamp) {
+
+    Instant instant = Instant.parse(timestamp);
+    ZonedDateTime instants = instant.atZone(ZoneId.of(getTimeZone()));
+
+    return instants.toLocalDateTime().toString();
   }
 }

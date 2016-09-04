@@ -16,4 +16,6 @@ public interface INoteRepository extends IRepositoryBase<Note> {
   List<Note> getByKind(long kind);
 
   List<Note> getFavs();
+
+  List<Note> getByAlphabetical(int page);
 }

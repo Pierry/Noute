@@ -33,6 +33,7 @@
           android:text="@string/by_modified"
           android:textColor="@color/nt_black"
           android:padding="@dimen/margin_small"
+          android:visibility="gone"
           android:layout_marginLeft="@dimen/default_margin"
           android:layout_marginRight="@dimen/default_margin"
           android:layout_marginTop="@dimen/margin_small"

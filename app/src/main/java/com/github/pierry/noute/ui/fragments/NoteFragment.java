@@ -2,6 +2,7 @@ package com.github.pierry.noute.ui.fragments;
 
 import android.content.Context;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -42,8 +43,7 @@ import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.sharedpreferences.Pref;
 
-@EFragment(R.layout.note_fragment) public class NoteFragment extends Fragment
-    implements IBackFragment {
+@EFragment(R.layout.note_fragment) public class NoteFragment extends Fragment {
 
   @ViewById RotateLoading rotateLoading;
   @ViewById RotateLoading rotateLoadingBottom;
@@ -57,6 +57,10 @@ import org.androidannotations.annotations.sharedpreferences.Pref;
   @Bean(NoteAdapter.class) NoteAdapter noteAdapter;
 
   @Pref MyPrefs_ myPrefs;
+
+  public static String BY_DATE = "bydate";
+  public static String BY_COLOR = "bycolor";
+  public static String BY_ALPHABETICAL = "byalphabetical";
 
   private static final int FIRST_PAGE = 0;
   public static String GRID = "grid";
@@ -106,7 +110,7 @@ import org.androidannotations.annotations.sharedpreferences.Pref;
       String[] splited = contentText.split("\n\n");
       note = new Note(splited[0], splited[1]);
     }
-    note.changeBackground(Fragment.WHITE_COLOR);
+    note.changeBackground(OptionsFragment.WHITE_COLOR);
     noteService.create(note);
     notes.add(0, note);
     noteAdapter.notifyDataSetChanged();
@@ -133,8 +137,10 @@ import org.androidannotations.annotations.sharedpreferences.Pref;
   }
 
   void load() {
-    if (myPrefs.organize().get().equals("bydate")) {
+    if (myPrefs.organize().get().equals(BY_DATE)) {
       loadByDate();
+    } else if (myPrefs.organize().get().equals(BY_ALPHABETICAL)) {
+      loadByAlphabetical();
     } else {
       loadByColor();
     }
@@ -157,6 +163,12 @@ import org.androidannotations.annotations.sharedpreferences.Pref;
 
   @Background public void loadByDate() {
     notes = noteService.getByDatetime(FIRST_PAGE);
+    hideLoader();
+    adapter();
+  }
+
+  @Background public void loadByAlphabetical() {
+    notes = noteService.getByAlphabetical(FIRST_PAGE);
     hideLoader();
     adapter();
   }
@@ -246,9 +258,10 @@ import org.androidannotations.annotations.sharedpreferences.Pref;
     newFragment.show(getActivity().getSupportFragmentManager(), "view");
   }
 
-  @Override public void click() {
+  @Override public void onDestroyView() {
     if (add.getVisibility() == View.VISIBLE) {
       add();
     }
+    super.onDestroyView();
   }
 }

@@ -3,6 +3,7 @@ package com.github.pierry.noute;
 import android.support.multidex.MultiDex;
 import android.util.Log;
 import com.crashlytics.android.Crashlytics;
+import com.jakewharton.threetenabp.AndroidThreeTen;
 import io.fabric.sdk.android.Fabric;
 import timber.log.Timber;
 
@@ -12,6 +13,7 @@ public class NouteApp extends com.activeandroid.app.Application {
     super.onCreate();
     Fabric.with(this, new Crashlytics());
     MultiDex.install(this);
+    AndroidThreeTen.init(this);
     if (BuildConfig.DEBUG) {
       Timber.plant(new Timber.DebugTree());
     } else {

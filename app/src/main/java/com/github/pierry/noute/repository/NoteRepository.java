@@ -8,6 +8,7 @@ import java.util.List;
 import org.androidannotations.annotations.EBean;
 
 @EBean public class NoteRepository implements INoteRepository {
+
   @Override public List<Note> get() {
     return new Select().from(Note.class).orderBy("Timestamp DESC").execute();
   }
@@ -52,7 +53,11 @@ import org.androidannotations.annotations.EBean;
   }
 
   @Override public List<Note> getByColor(int page) {
-    return new Select().from(Note.class).orderBy("BackgroundColor DESC").offset(page).limit(20).execute();
+    return new Select().from(Note.class)
+        .orderBy("BackgroundColor DESC")
+        .offset(page)
+        .limit(20)
+        .execute();
   }
 
   @Override public List<Note> getByKind(long id) {
@@ -61,5 +66,9 @@ import org.androidannotations.annotations.EBean;
 
   @Override public List<Note> getFavs() {
     return new Select().from(Note.class).where("IsFav=1").orderBy("Timestamp DESC").execute();
+  }
+
+  @Override public List<Note> getByAlphabetical(int page) {
+    return new Select().from(Note.class).orderBy("Title ASC").offset(page).limit(20).execute();
   }
 }

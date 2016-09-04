@@ -16,11 +16,11 @@ import org.androidannotations.annotations.sharedpreferences.Pref;
 
   @ViewById Button byDate;
   @ViewById Button byColor;
-  @ViewById Button byModified;
+  @ViewById Button byAlphabetical;
 
   public static String BY_DATE = "bydate";
   public static String BY_COLOR = "bycolor";
-  public static String BY_MODIFIED = "bymodified";
+  public static String BY_ALPHABETICAL = "byalphabetical";
 
   @Pref MyPrefs_ myPrefs;
 
@@ -48,7 +48,9 @@ import org.androidannotations.annotations.sharedpreferences.Pref;
     getActivity().recreate();
   }
 
-  @Click void byModified() {
-
+  @Click void byAlphabetical() {
+    myPrefs.edit().organize().put(BY_ALPHABETICAL).apply();
+    getDialog().dismiss();
+    getActivity().recreate();
   }
 }

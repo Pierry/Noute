@@ -19,6 +19,7 @@
           app:showAsAction="ifRoom"/>
       <item
           android:id="@+id/actionView"
+          android:visible="false"
           android:title="Alterar visualização"
           app:showAsAction="ifRoom"/>
     </menu>

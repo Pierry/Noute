@@ -17,7 +17,7 @@ import com.github.pierry.noute.common.FontfaceHelper;
 import com.github.pierry.noute.domain.Note;
 import com.github.pierry.noute.domain.interfaces.INoteService;
 import com.github.pierry.noute.services.NoteService;
-import com.github.pierry.noute.ui.fragments.Fragment;
+import com.github.pierry.noute.ui.fragments.OptionsFragment;
 import com.github.pierry.simpletoast.SimpleToast;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
@@ -61,7 +61,7 @@ import org.androidannotations.annotations.ViewById;
 
   @Click void cardView() {
     FragmentTransaction ft = fragmentManager.beginTransaction();
-    DialogFragment newFragment = Fragment.newInstance(note);
+    DialogFragment newFragment = OptionsFragment.newInstance(note);
     newFragment.show(fragmentManager, "dialog");
   }
 
@@ -86,52 +86,52 @@ import org.androidannotations.annotations.ViewById;
     if (note.getBackgroundColor() != null) {
       color = note.getBackgroundColor();
       switch (color) {
-        case Fragment.PINK_COLOR:
+        case OptionsFragment.PINK_COLOR:
           title.setTextColor(getResources().getColor(R.color.nt_white));
           noteContent.setTextColor(getResources().getColor(R.color.nt_white));
           timestamp.setTextColor(getResources().getColor(R.color.nt_white));
           break;
-        case Fragment.LIGHT_PINK_COLOR:
+        case OptionsFragment.LIGHT_PINK_COLOR:
           title.setTextColor(getResources().getColor(R.color.nt_black));
           noteContent.setTextColor(getResources().getColor(R.color.nt_black));
           timestamp.setTextColor(getResources().getColor(R.color.nt_black));
           break;
-        case Fragment.ORANGE_COLOR:
+        case OptionsFragment.ORANGE_COLOR:
           title.setTextColor(getResources().getColor(R.color.nt_black));
           noteContent.setTextColor(getResources().getColor(R.color.nt_black));
           timestamp.setTextColor(getResources().getColor(R.color.nt_black));
           break;
-        case Fragment.YELLOW_COLOR:
+        case OptionsFragment.YELLOW_COLOR:
           title.setTextColor(getResources().getColor(R.color.nt_black));
           noteContent.setTextColor(getResources().getColor(R.color.nt_black));
           timestamp.setTextColor(getResources().getColor(R.color.nt_black));
           break;
-        case Fragment.GREEN_COLOR:
+        case OptionsFragment.GREEN_COLOR:
           title.setTextColor(getResources().getColor(R.color.nt_black));
           noteContent.setTextColor(getResources().getColor(R.color.nt_black));
           timestamp.setTextColor(getResources().getColor(R.color.nt_black));
           break;
-        case Fragment.LIGHT_GREEN_COLOR:
+        case OptionsFragment.LIGHT_GREEN_COLOR:
           title.setTextColor(getResources().getColor(R.color.nt_black));
           noteContent.setTextColor(getResources().getColor(R.color.nt_black));
           timestamp.setTextColor(getResources().getColor(R.color.nt_black));
           break;
-        case Fragment.BLUE_COLOR:
+        case OptionsFragment.BLUE_COLOR:
           title.setTextColor(getResources().getColor(R.color.nt_white));
           noteContent.setTextColor(getResources().getColor(R.color.nt_white));
           timestamp.setTextColor(getResources().getColor(R.color.nt_white));
           break;
-        case Fragment.GRAY_COLOR:
+        case OptionsFragment.GRAY_COLOR:
           title.setTextColor(getResources().getColor(R.color.nt_black));
           noteContent.setTextColor(getResources().getColor(R.color.nt_black));
           timestamp.setTextColor(getResources().getColor(R.color.nt_black));
           break;
-        case Fragment.BLACK_COLOR:
+        case OptionsFragment.BLACK_COLOR:
           title.setTextColor(getResources().getColor(R.color.nt_white));
           noteContent.setTextColor(getResources().getColor(R.color.nt_white));
           timestamp.setTextColor(getResources().getColor(R.color.nt_white));
           break;
-        case Fragment.WHITE_COLOR:
+        case OptionsFragment.WHITE_COLOR:
           title.setTextColor(getResources().getColor(R.color.nt_black));
           noteContent.setTextColor(getResources().getColor(R.color.nt_black));
           timestamp.setTextColor(getResources().getColor(R.color.nt_black));
