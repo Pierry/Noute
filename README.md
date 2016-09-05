@@ -10,21 +10,30 @@ Libraries used
 
 - AndroidAnnotations
 - ActiveAndroid
+- MaterialDrawer
+- fitLoader
+- SimpleToast
+- MaterialTabStrip
+- ThreenTenABP
 
 Patterns and approaches
 =======
 
 - Repository Pattern
 - Specification Pattern
-
-Credits
-=======
+- SOLID
+- Dependency Injection (IoC)
+- Specification Pattern
 
 License
 =======
 
+[Apache License v2](http://www.apache.org/licenses/LICENSE-2.0)
+
 Download
 =======
+
+[Google Play](https://play.google.com/store/apps/details?id=com.github.pierry.noute&hl=pt_BR)
 
 Preview
 =======
