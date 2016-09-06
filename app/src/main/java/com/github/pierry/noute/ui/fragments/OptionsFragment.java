@@ -166,8 +166,12 @@ import org.androidannotations.annotations.ViewById;
   }
 
   @Click void ok() {
-    note.changeTitle(title.getText().toString());
-    note.changeContent(content.getText().toString());
+    if (!title.getText().toString().equals("")) {
+      note.changeTitle(title.getText().toString());
+    }
+    if (!content.getText().toString().toString().equals("")) {
+      note.changeContent(content.getText().toString());
+    }
     noteService.update(note);
     if (getDialog() != null) {
       getDialog().dismiss();
