@@ -108,7 +108,12 @@ import org.androidannotations.annotations.sharedpreferences.Pref;
       note = new Note(contentText, "");
     } else {
       String[] splited = contentText.split("\n\n");
-      note = new Note(splited[0], splited[1]);
+      String title = splited[0];
+      String body = "";
+      for (String item : splited) {
+        body.concat(item + "\n\n");
+      }
+      note = new Note(title, body);
     }
     note.changeBackground(OptionsFragment.WHITE_COLOR);
     noteService.create(note);
