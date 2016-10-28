@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/layoutMain"
     android:animateLayoutChanges="true"
-    android:background="@color/icons"
+    android:background="@color/nt_silver"
     android:layout_width="match_parent" android:layout_height="match_parent">
   <com.github.pierry.fitloader.RotateLoading
       android:id="@+id/rotateLoading"
@@ -35,8 +35,8 @@
         android:hint="@string/type_your_text"
         android:padding="@dimen/default_margin"
         android:id="@+id/content"
-        android:textColorHint="@color/nt_gray"
-        android:textColor="@color/nt_black"
+        android:textColorHint="@color/nt_silver"
+        android:textColor="@color/nt_white"
         android:layout_margin="@dimen/margin_small"
         android:background="@drawable/back_edittext"
         android:textCursorDrawable="@drawable/text_cursor_cyan"/>

@@ -1,6 +1,6 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@color/icons"
+    android:background="@color/nt_silver"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
   <RelativeLayout
@@ -17,7 +17,7 @@
       <LinearLayout
           android:orientation="vertical"
           android:layout_width="match_parent"
-          android:background="@drawable/back_edittext"
+          android:background="@drawable/back_edittext_options"
           android:layout_height="wrap_content">
         <EditText
             android:layout_width="match_parent"
@@ -25,8 +25,8 @@
             android:textSize="@dimen/font_large"
             android:padding="@dimen/default_margin"
             android:id="@+id/title"
-            android:textColorHint="@color/nt_gray"
-            android:textColor="@color/nt_black"
+            android:textColorHint="@color/nt_white"
+            android:textColor="@color/nt_white"
             android:background="@null"
             android:layout_marginTop="@dimen/margin_small"
             android:layout_marginRight="@dimen/margin_small"
@@ -37,9 +37,9 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/default_margin"
             android:id="@+id/content"
-            android:textColorHint="@color/nt_gray"
+            android:textColorHint="@color/nt_white"
             android:background="@null"
-            android:textColor="@color/nt_black"
+            android:textColor="@color/nt_white"
             android:layout_marginLeft="@dimen/margin_small"
             android:layout_marginRight="@dimen/margin_small"
             android:layout_marginBottom="@dimen/margin_small"

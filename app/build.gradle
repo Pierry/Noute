@@ -76,8 +76,8 @@ android {
     applicationId "com.github.pierry.noute"
     minSdkVersion 16
     targetSdkVersion 24
-    versionCode 5
-    versionName "1.4"
+    versionCode 6
+    versionName "1.5"
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
   }
 

@@ -2,7 +2,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/layoutMain"
-    android:background="@color/icons"
+    android:background="@color/nt_silver"
     android:layout_width="match_parent" android:layout_height="match_parent">
   <com.github.pierry.fitloader.RotateLoading
       android:id="@+id/rotateLoading"
