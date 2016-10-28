@@ -31,18 +31,18 @@
           android:textSize="@dimen/font_large"
           android:textColor="@color/nt_black"
           android:layout_marginLeft="@dimen/margin_default"
-          android:layout_marginTop="@dimen/margin_small"
-          android:layout_marginRight="@dimen/margin_small"
+          android:layout_marginTop="@dimen/margin_default"
+          android:layout_marginRight="@dimen/margin_default"
           android:layout_height="wrap_content"/>
       <TextView
           android:id="@+id/noteContent"
           android:layout_width="wrap_content"
           android:text="@string/content_example"
           android:textColor="@color/nt_gray"
-          android:layout_marginLeft="@dimen/margin_small"
+          android:layout_marginLeft="@dimen/margin_default"
           android:layout_marginTop="@dimen/margin_2dp"
-          android:layout_marginBottom="@dimen/margin_small"
-          android:layout_marginRight="@dimen/margin_small"
+          android:layout_marginBottom="@dimen/margin_default"
+          android:layout_marginRight="@dimen/margin_default"
           android:layout_height="wrap_content"/>
       <TextView
           android:id="@+id/timestamp"
@@ -51,7 +51,7 @@
           android:textColor="@color/nt_gray"
           android:textSize="@dimen/font_tiny"
           android:layout_gravity="right"
-          android:layout_marginRight="@dimen/margin_small"
+          android:layout_marginRight="@dimen/margin_default"
           android:layout_marginTop="@dimen/margin_tiny"
           android:layout_marginBottom="@dimen/margin_tiny"
           android:layout_height="wrap_content"/>
