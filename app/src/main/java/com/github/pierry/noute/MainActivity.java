@@ -14,7 +14,7 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Fullscreen;
 import org.androidannotations.annotations.ViewById;
 
-@Fullscreen @EActivity(R.layout.main_activity) public class MainActivity extends AppCompatActivity
+@EActivity(R.layout.main_activity) public class MainActivity extends AppCompatActivity
     implements ViewPager.OnPageChangeListener {
 
   @ViewById PagerSlidingTabStrip tabs;
