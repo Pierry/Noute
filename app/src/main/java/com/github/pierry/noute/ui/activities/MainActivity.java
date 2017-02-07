@@ -1,10 +1,11 @@
-package com.github.pierry.noute;
+package com.github.pierry.noute.ui.activities;
 
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
 import com.astuetz.PagerSlidingTabStrip;
+import com.github.pierry.noute.R;
 import com.github.pierry.noute.ui.adapter.MainAdapter;
 import com.github.pierry.noute.ui.common.ToolbarBase;
 import com.readystatesoftware.systembartint.SystemBarTintManager;

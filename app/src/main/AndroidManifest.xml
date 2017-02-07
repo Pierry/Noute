@@ -22,7 +22,7 @@
         android:value="com.github.pierry.noute.domain.Note,
         com.github.pierry.noute.domain.Kind"
     />
-    <activity android:name=".MainActivity_">
+    <activity android:name=".ui.activities.MainActivity_">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
 

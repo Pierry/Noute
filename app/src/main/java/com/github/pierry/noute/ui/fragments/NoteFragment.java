@@ -1,6 +1,5 @@
 package com.github.pierry.noute.ui.fragments;
 
-import android.content.Context;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -21,13 +20,13 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.github.pierry.fitloader.RotateLoading;
-import com.github.pierry.noute.MainActivity;
 import com.github.pierry.noute.R;
 import com.github.pierry.noute.common.FontfaceHelper;
 import com.github.pierry.noute.common.MyPrefs_;
 import com.github.pierry.noute.domain.Note;
 import com.github.pierry.noute.domain.interfaces.INoteService;
 import com.github.pierry.noute.services.NoteService;
+import com.github.pierry.noute.ui.activities.MainActivity;
 import com.github.pierry.noute.ui.adapter.NoteAdapter;
 import com.github.pwittchen.infinitescroll.library.InfiniteScrollListener;
 import java.util.ArrayList;
@@ -104,17 +103,7 @@ import org.androidannotations.annotations.sharedpreferences.Pref;
   @Click void add() {
     String contentText = content.getText().toString();
     Note note = null;
-    if (!contentText.contains("\n\n")) {
-      note = new Note(contentText, "");
-    } else {
-      String[] splited = contentText.split("\n\n");
-      String title = splited[0];
-      String body = "";
-      for (String item : splited) {
-        body.concat(item + "\n\n");
-      }
-      note = new Note(title, body);
-    }
+    note = new Note(contentText, "");
     note.changeBackground(OptionsFragment.WHITE_COLOR);
     noteService.create(note);
     notes.add(0, note);
@@ -181,7 +170,6 @@ import org.androidannotations.annotations.sharedpreferences.Pref;
   @UiThread void adapter() {
     noteAdapter.addItems(notes);
     recyclerView.setAdapter(noteAdapter);
-    //recyclerView.addOnScrollListener(infiniteScroll);
   }
 
   @UiThread void showLoader() {
@@ -214,23 +202,12 @@ import org.androidannotations.annotations.sharedpreferences.Pref;
       }
 
       @Override public boolean onQueryTextChange(String newText) {
-        if (newText.length() < 3 && newText.length() > 0) {
-          return false;
-        }
-        showLoader();
-        searchAndUpdate(newText);
         return true;
-      }
-    });
-    searchView.setOnClickListener(new View.OnClickListener() {
-      @Override public void onClick(View v) {
-
       }
     });
   }
 
   @UiThread void createInfiniteScrollListener() {
-    final Context context = getActivity();
     infiniteScroll = new InfiniteScrollListener(20, linearManager) {
       @Override public void onScrolledToEnd(final int firstVisibleItemPosition) {
         if (firstVisibleItemPosition == lastVisibleItem) {
