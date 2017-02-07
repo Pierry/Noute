@@ -7,6 +7,8 @@ The Nouse's proposal its to renew that experience by a very simple note app.
 Backlog
 ======
 
+- Dagger 2
+- RxAndroid
 - Take a photo
 - Change to BottomNavigationBar
 - Populate Drawer
