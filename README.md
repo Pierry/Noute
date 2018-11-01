@@ -1,50 +1,28 @@
-Motivation
-=======
+Noute - Kotlin
+===
 
-Evernote and Google Keep has started providing some basic features like notes, a few basic filters, and more important, these features were extremely fast at the major smartphones. As the time gone by, these apps has envolved and its features bacame complex and started to showing delays, losing its initial diferencial.
-The Nouse's proposal its to renew that experience by a very simple note app.
 
-Backlog
-======
+Evernote and Google Keep has started providing some basic features like notes, a few basic filters, and more important, these features were extremely fast at the major smartphones. As the time gone by, these apps has envolved and its features bacame complex and started to showing delays, losing its initial diferencial. The Nouse's proposal its to renew that experience by a very simple note app.
 
-- Dagger 2
-- RxAndroid
-- Take a photo
-- Change to BottomNavigationBar
-- Populate Drawer
-- New add note layout
+### Specs
 
-Libraries used
-=======
+- LiveData
+- Dagger2
+- ConstraintLayout
+- RoomDb
 
-- AndroidAnnotations
-- ActiveAndroid
-- MaterialDrawer
-- fitLoader
-- SimpleToast
-- MaterialTabStrip
-- ThreenTenABP
+### Nexts steps
 
-Patterns and approaches
-=======
+- Android ViewModel
+- Tests
 
-- Repository Pattern
-- Specification Pattern
-- SOLID
-- Dependency Injection (IoC)
-- Specification Pattern
+### Screenshot
 
-License
-=======
+![](https://raw.githubusercontent.com/Pierry/noute-app/master/docs/hero.png)
 
-[Apache License v2](http://www.apache.org/licenses/LICENSE-2.0)
 
-Download
-=======
+### License
 
-[Google Play](https://play.google.com/store/apps/details?id=com.github.pierry.noute&hl=pt_BR)
+Apache License v2 - http://www.apache.org/licenses/LICENSE-2.0
 
-Preview
-=======
 
-![asdds](https://github.com/Pierry/Noute/blob/master/app/src/main/art/hero.png?raw=true)

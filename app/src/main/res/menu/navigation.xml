@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+  <group android:checkableBehavior="single">
+    <item
+        android:id="@+id/actionNotes"
+        android:checked="true"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/notes" />
+    <item
+        android:id="@+id/actionFavs"
+        android:icon="@drawable/ic_favorite_black_24dp"
+        android:title="@string/favs" />
+  </group>
+</menu>

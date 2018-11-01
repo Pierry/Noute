@@ -1,80 +1,49 @@
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/layoutMain"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical"
     android:animateLayoutChanges="true"
-    android:background="@color/nt_silver"
-    android:layout_width="match_parent" android:layout_height="match_parent">
-  <com.github.pierry.fitloader.RotateLoading
-      android:id="@+id/rotateLoading"
-      android:layout_width="@dimen/rotate_loading"
-      android:visibility="gone"
-      android:layout_height="@dimen/rotate_loading"
-      app:loading_width="@dimen/rotate_loading_width"
-      android:background="@android:color/transparent"
-      android:layout_centerInParent="true"
-  />
-  <com.github.pierry.fitloader.RotateLoading
-      android:id="@+id/rotateLoadingBottom"
-      android:layout_width="@dimen/rotate_loading"
-      android:visibility="gone"
-      android:layout_height="@dimen/rotate_loading"
-      app:loading_width="@dimen/rotate_loading_width"
-      android:layout_alignParentBottom="true"
-      android:background="@android:color/transparent"
-      android:layout_centerHorizontal="true"
-  />
-  <LinearLayout android:layout_width="match_parent"
-      android:orientation="vertical"
-      android:id="@+id/layoutEdit"
-      android:animateLayoutChanges="true"
-      android:layout_height="wrap_content">
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/type_your_text"
-        android:padding="@dimen/default_margin"
-        android:id="@+id/content"
-        android:textColorHint="@color/nt_silver"
-        android:textColor="@color/nt_white"
-        android:layout_margin="@dimen/margin_small"
-        android:background="@drawable/back_edittext"
-        android:textCursorDrawable="@drawable/text_cursor_cyan"/>
-    <Button
-        android:id="@+id/add"
-        android:visibility="gone"
-        android:text="@string/save"
-        android:textColor="@color/nt_black"
-        android:padding="@dimen/margin_small"
-        android:layout_margin="@dimen/margin_small"
-        android:background="@drawable/default_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-  </LinearLayout>
-  <RelativeLayout
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+
+  <android.support.constraint.ConstraintLayout
       android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:id="@+id/body"
-      android:animateLayoutChanges="true"
-      android:layout_below="@+id/layoutEdit"
-      android:orientation="horizontal"
-  >
-    <LinearLayout
-        android:id="@+id/layoutTitle"
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:animateLayoutChanges="true"
-        android:layout_height="match_parent">
-      <android.support.v4.widget.SwipeRefreshLayout
-          android:id="@+id/swipeRefreshLayout"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent">
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scrollbars="vertical"/>
-      </android.support.v4.widget.SwipeRefreshLayout>
-    </LinearLayout>
-  </RelativeLayout>
-</RelativeLayout>
+      android:layout_height="match_parent">
+
+    <EditText
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:hint="@string/write_here"
+        android:padding="@dimen/size_20_dp"
+        android:background="@drawable/editbox"
+        android:id="@+id/body" app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+        app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp" android:layout_width="0dp"/>
+    <android.support.v7.widget.RecyclerView
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add" android:layout_width="0dp" android:layout_height="0dp"
+        android:id="@+id/recycler" android:layout_marginTop="8dp"/>
+    <Button
+        android:text="@string/save"
+        android:textColor="@color/n_white"
+        android:background="@drawable/button"
+        android:visibility="gone"
+        android:layout_height="wrap_content"
+        android:id="@+id/add" android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/body"
+        app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="8dp" android:layout_width="0dp"/>
+    <include android:layout_width="@dimen/size_20_dp" android:layout_height="@dimen/size_20_dp" layout="@layout/view_loader"
+        app:layout_constraintEnd_toEndOf="@+id/recycler" app:layout_constraintTop_toBottomOf="@+id/add"
+        app:layout_constraintStart_toStartOf="@+id/recycler"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/recycler" android:id="@+id/include"/>
+    <include android:layout_width="wrap_content" android:layout_height="wrap_content" layout="@layout/view_no_content"
+        app:layout_constraintEnd_toEndOf="@+id/recycler"
+        app:layout_constraintStart_toStartOf="@+id/recycler"
+        app:layout_constraintHorizontal_bias="0.502"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/recycler"
+        app:layout_constraintTop_toBottomOf="@+id/add"/>
+  </android.support.constraint.ConstraintLayout>
+</LinearLayout>

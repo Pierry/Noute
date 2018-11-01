@@ -1,9 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/toolbar"
-    app:theme="@style/ThemeOverlay.AppCompat.Light"
-    android:layout_width="match_parent"
-    android:background="@color/colorPrimary"
-    android:layout_height="wrap_content"
-    android:minHeight="?attr/actionBarSize"/>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+  <android.support.v7.widget.Toolbar
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:background="@color/white"
+      android:theme="?attr/actionBarTheme"
+      android:minHeight="?attr/actionBarSize"
+      android:id="@+id/toolbar"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+  />
+  <TextView
+      android:textStyle="bold"
+      android:textColor="@color/colorPrimaryDark"
+      android:textSize="@dimen/font_18_sp"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/topTitle"
+      app:layout_constraintEnd_toEndOf="@+id/toolbar"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/toolbar"
+      app:layout_constraintBottom_toBottomOf="@+id/toolbar"/>
+</android.support.constraint.ConstraintLayout>

@@ -1,20 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <!-- Default screen margins, per the Android Design guidelines. -->
-  <dimen name="activity_horizontal_margin">16dp</dimen>
-  <dimen name="activity_vertical_margin">16dp</dimen>
-  <dimen name="framelayout_height">0px</dimen>
-  <dimen name="rotate_loading">60dp</dimen>
-  <dimen name="rotate_loading_width">5dp</dimen>
-  <dimen name="margin_small">10dp</dimen>
-  <dimen name="font_small">12sp</dimen>
-  <dimen name="margin_tiny">5dp</dimen>
-  <dimen name="default_margin">20dp</dimen>
-  <dimen name="font_large">20sp</dimen>
-  <dimen name="font_tiny">10sp</dimen>
-  <dimen name="left_default_with_icon">72dp</dimen>
-  <dimen name="tab_size">30dp</dimen>
-  <dimen name="margin_2dp">2dp</dimen>
-  <dimen name="box_color">30dp</dimen>
-  <dimen name="margin_large">40dp</dimen>
-  <dimen name="margin_default">15dp</dimen>
+  <dimen name="height_56_dp">56dp</dimen>
+  <dimen name="size_20_dp">20dp</dimen>
+  <dimen name="font_16_sp">16sp</dimen>
+  <dimen name="font_18_sp">18sp</dimen>
+  <dimen name="font_11_sp">11sp</dimen>
+  <dimen name="size_5_dp">5dp</dimen>
+  <dimen name="size_10_dp">10dp</dimen>
+  <dimen name="size_3_dp">3dp</dimen>
+  <dimen name="font_12_sp">12sp</dimen>
 </resources>
